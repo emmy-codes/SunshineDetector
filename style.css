@@ -70,12 +70,79 @@ main {
 /* Mountains */
 
 .mountain1 {
-  position: absolute;
+  position: fixed;
   content: " ";
   bottom: 0;
-  left: 30vw;
-  border-top: ;
-  border-right: ;
-  border-bottom: ;
-  border-left: ;
+  left: 100px;
+  border-top: 0px solid transparent;
+  border-right: 180px solid transparent;
+  border-bottom: 370px solid var(--special-light-teal);
+  border-left: 180px solid transparent;
+  z-index: 5;
+}
+
+.mountain1::after {
+  position: fixed;
+  content: " ";
+  bottom: 0;
+  left: 280px;
+  border-top: 0px solid transparent;
+  border-right: 140px solid transparent;
+  border-bottom: 370px solid var(--special-dark-teal);
+  border-left: 0px solid transparent;
+  z-index: 5;
+  transform-origin: top right;
+  transform: skewX(20deg);
+}
+
+.mountain2 {
+  position: fixed;
+  content: " ";
+  bottom: 0;
+  left: -100px;
+  border-top: 0px solid transparent;
+  border-right: 220px solid transparent;
+  border-bottom: 270px solid var(--light-teal);
+  border-left: 220px solid transparent;
+  z-index: 7;
+}
+
+.mountain2::after {
+  position: fixed;
+  content: " ";
+  bottom: 0;
+  left: 120px;
+  border-top: 0px solid transparent;
+  border-right: 130px solid transparent;
+  border-bottom: 270px solid var(--dark-teal);
+  border-left: 0px solid transparent;
+  z-index: 7;
+  transform-origin: top right;
+  transform: skewX(20deg);
+}
+
+.mountain3 {
+  position: fixed;
+  content: " ";
+  bottom: 0;
+  right: -50px;
+  border-top: 0px solid transparent;
+  border-right: 180px solid transparent;
+  border-bottom: 330px solid var(--light-teal);
+  border-left: 180px solid transparent;
+  z-index: 6;
+}
+
+.mountain3::after {
+  position: fixed;
+  content: " ";
+  bottom: 0;
+  right: -50px;
+  border-top: 0px solid transparent;
+  border-right: 180px solid transparent;
+  border-bottom: 330px solid var(--dark-teal);
+  border-left: 0px solid transparent;
+  z-index: 6;
+  transform-origin: top right;
+  transform: skewX(15deg);
 }
