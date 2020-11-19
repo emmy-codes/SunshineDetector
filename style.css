@@ -1,52 +1,51 @@
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-
 :root {
-    --linen: #F3E9DD;;
-    --dark-peach: #F67E70;
-    --light-peach: #F9B2AA;
-    --dark-gray: #363638;
-    --light-teal: #267B7E;
-    --dark-teal: #1A535C;
-    --special-light-teal: #1E5F62;
-    --special-dark-teal: #154249;
-    --sun-size: 6rem;
-    --font-numbers: 'Righteous', sans-serif;
-    --font-text: 'Quattrocento Sans', sans-serif;
+  --linen: #f3e9dd;
+  --dark-peach: #f67e70;
+  --light-peach: #f9b2aa;
+  --dark-gray: #363638;
+  --light-teal: #267b7e;
+  --dark-teal: #1a535c;
+  --special-light-teal: #1e5f62;
+  --special-dark-teal: #154249;
+  --sun-size: 6rem;
+  --font-numbers: "Righteous", sans-serif;
+  --font-text: "Quattrocento Sans", sans-serif;
 }
 
 body {
-    background: var(--linen);
-    width: 100vw;
-    height: 100vh;
+  background: var(--linen);
+  width: 100vw;
+  height: 100vh;
 }
 
 .top {
-    display: flex;
-    justify-content: space-between;
-    margin: 1rem;
-    font-family: var(--font-text);
-    font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+  font-family: var(--font-text);
+  font-weight: 700;
 }
 main {
-    position: relative;
-    border: 1px solid red;
+  position: relative;
+  border: 1px solid red;
 }
 
 .sun {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    background: var(--dark-peach);
-    height: var(--sun-size);
-    width: var(--sun-size);
-    top: 5vh;
-    left: 15vw;
-    z-index: -10;
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: var(--dark-peach);
+  height: var(--sun-size);
+  width: var(--sun-size);
+  top: 5vh;
+  left: 15vw;
+  z-index: -10;
 }
 
 /* .sun::after {
@@ -54,19 +53,29 @@ main {
     transform: translateX(30px);
 } */
 .center-text {
-
-    text-align: center;
-    margin-top: 25vh;
-    color: var(--dark-gray);
-    
+  text-align: center;
+  margin-top: 25vh;
+  color: var(--dark-gray);
 }
 
 .info {
-    font-family: var(--font-text);
-    font-weight: 700;
+  font-family: var(--font-text);
+  font-weight: 700;
 }
 .countdown {
-    font-size: 4rem;
-    font-family: var(--font-numbers);
+  font-size: 4rem;
+  font-family: var(--font-numbers);
 }
 
+/* Mountains */
+
+.mountain1 {
+  position: absolute;
+  content: " ";
+  bottom: 0;
+  left: 30vw;
+  border-top: ;
+  border-right: ;
+  border-bottom: ;
+  border-left: ;
+}
