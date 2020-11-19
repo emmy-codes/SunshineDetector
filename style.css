@@ -1,0 +1,51 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Quattrocento+Sans:wght@400;700&family=Righteous&display=swap%27');
+
+:root {
+    --linen: #F3E9DD;;
+    --dark-peach: #F67E70;
+    --light-peach: #F9B2AA;
+    --dark-gray: #363638;
+    --light-teal: #267B7E;
+    --dark-teal: #1A535C;
+    --special-light-teal: #1E5F62;
+    --special-dark-teal: #154249;
+    --sun-size: 6rem;
+    --font-numbers: 'Righteous', cursive;
+    --font-text: 'Quattrocento Sans', sans-serif;
+}
+
+body {
+    background: var(--linen);
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+    font-family: var(--font-text);
+    font-weight: 700;
+}
+
+.sun {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: var(--dark-peach);
+    height: var(--sun-size);
+    width: var(--sun-size);
+}
+
+/* .sun::after {
+    background: var(--linen);
+    transform: translateX(30px);
+} */
+
+.info {
+    
+}
