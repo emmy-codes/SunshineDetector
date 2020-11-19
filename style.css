@@ -73,10 +73,10 @@ main {
   position: fixed;
   content: " ";
   bottom: 0;
-  left: 120px;
+  left: 100px;
   border-top: 0px solid transparent;
   border-right: 180px solid transparent;
-  border-bottom: 350px solid var(--special-light-teal);
+  border-bottom: 370px solid var(--special-light-teal);
   border-left: 180px solid transparent;
   z-index: 5;
 }
@@ -85,10 +85,10 @@ main {
   position: fixed;
   content: " ";
   bottom: 0;
-  left: 300px;
+  left: 280px;
   border-top: 0px solid transparent;
   border-right: 140px solid transparent;
-  border-bottom: 350px solid var(--special-dark-teal);
+  border-bottom: 370px solid var(--special-dark-teal);
   border-left: 0px solid transparent;
   z-index: 5;
   transform-origin: top right;
@@ -99,24 +99,24 @@ main {
   position: fixed;
   content: " ";
   bottom: 0;
-  left: 0px;
+  left: -100px;
   border-top: 0px solid transparent;
-  border-right: 130px solid transparent;
-  border-bottom: 250px solid var(--light-teal);
-  border-left: 130px solid transparent;
-  z-index: 6;
+  border-right: 220px solid transparent;
+  border-bottom: 270px solid var(--light-teal);
+  border-left: 220px solid transparent;
+  z-index: 7;
 }
 
 .mountain2::after {
   position: fixed;
   content: " ";
   bottom: 0;
-  left: 130px;
+  left: 120px;
   border-top: 0px solid transparent;
-  border-right: 100px solid transparent;
-  border-bottom: 250px solid var(--dark-teal);
+  border-right: 130px solid transparent;
+  border-bottom: 270px solid var(--dark-teal);
   border-left: 0px solid transparent;
-  z-index: 6;
+  z-index: 7;
   transform-origin: top right;
   transform: skewX(20deg);
 }
@@ -125,24 +125,24 @@ main {
   position: fixed;
   content: " ";
   bottom: 0;
-  left: 120px;
+  right: -50px;
   border-top: 0px solid transparent;
   border-right: 180px solid transparent;
-  border-bottom: 350px solid var(--special-light-teal);
+  border-bottom: 330px solid var(--light-teal);
   border-left: 180px solid transparent;
-  z-index: 5;
+  z-index: 6;
 }
 
 .mountain3::after {
   position: fixed;
   content: " ";
   bottom: 0;
-  left: 300px;
+  right: -50px;
   border-top: 0px solid transparent;
-  border-right: 140px solid transparent;
-  border-bottom: 350px solid var(--special-dark-teal);
+  border-right: 180px solid transparent;
+  border-bottom: 330px solid var(--dark-teal);
   border-left: 0px solid transparent;
-  z-index: 5;
+  z-index: 6;
   transform-origin: top right;
-  transform: skewX(20deg);
+  transform: skewX(15deg);
 }
