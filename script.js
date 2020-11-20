@@ -16,12 +16,13 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
         alert('Sorry, no position available.');
       }
 
-      function getAPI (x, y){
+      function getAPI (x, y) {
       const lat = x
       const long = y
-      const url = "https://api.sunrise-sunset.org/json"
-      const requestURL = url.concat("&lat=", lat, "&lng=", long)
+      const url = "https://cors-anywhere.herokuapp.com/https://api.sunrise-sunset.org/json"
+      const requestURL = url.concat("?lat=", lat, "&lng=", long)
 
+      console.log(requestURL)
       fetch(requestURL)
       .then(response => response.json())
       .then(data => console.log(data));
