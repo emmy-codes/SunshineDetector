@@ -20,8 +20,13 @@
 
 body {
   background: var(--linen);
+}
+
+main {
   width: 100vw;
   height: 100vh;
+  position: relative;
+  overflow: hidden;
 }
 
 .top {
@@ -31,10 +36,6 @@ body {
   font-family: var(--font-text);
   font-weight: 700;
 }
-main {
-  position: relative;
-  border: 1px solid red;
-}
 
 .sun {
   content: "";
@@ -43,7 +44,7 @@ main {
   background: var(--dark-peach);
   height: var(--sun-size);
   width: var(--sun-size);
-  top: 5vh;
+  top: 0;
   left: 15vw;
   z-index: -10;
 }
@@ -52,6 +53,7 @@ main {
     background: var(--linen);
     transform: translateX(30px);
 } */
+
 .center-text {
   text-align: center;
   margin-top: 25vh;
@@ -70,51 +72,47 @@ main {
 /* Mountains */
 
 .mountain1 {
-  position: fixed;
+  position: absolute;
   content: " ";
-  bottom: 0;
-  left: 100px;
+  bottom: -20px;
+  left: 8%;
   border-top: 0px solid transparent;
   border-right: 180px solid transparent;
-  border-bottom: 370px solid var(--special-light-teal);
+  border-bottom: 35rem solid var(--special-light-teal);
   border-left: 180px solid transparent;
   z-index: 5;
 }
 
 .mountain1::after {
-  position: fixed;
+  position: absolute;
   content: " ";
-  bottom: 0;
-  left: 280px;
   border-top: 0px solid transparent;
   border-right: 140px solid transparent;
-  border-bottom: 370px solid var(--special-dark-teal);
+  border-bottom: 30rem solid var(--special-dark-teal);
   border-left: 0px solid transparent;
   z-index: 5;
   transform-origin: top right;
-  transform: skewX(20deg);
+  transform: skewX(15deg);
 }
 
 .mountain2 {
-  position: fixed;
+  position: absolute;
   content: " ";
-  bottom: 0;
-  left: -100px;
+  bottom: -20px;
+  left: -35%;
   border-top: 0px solid transparent;
   border-right: 220px solid transparent;
-  border-bottom: 270px solid var(--light-teal);
+  border-bottom: 440px solid var(--light-teal);
   border-left: 220px solid transparent;
   z-index: 7;
 }
 
 .mountain2::after {
-  position: fixed;
+  position: absolute;
   content: " ";
-  bottom: 0;
-  left: 120px;
   border-top: 0px solid transparent;
   border-right: 130px solid transparent;
-  border-bottom: 270px solid var(--dark-teal);
+  border-bottom: 440px solid var(--dark-teal);
   border-left: 0px solid transparent;
   z-index: 7;
   transform-origin: top right;
@@ -122,10 +120,10 @@ main {
 }
 
 .mountain3 {
-  position: fixed;
+  position: absolute;
   content: " ";
-  bottom: 0;
-  right: -50px;
+  bottom: -20px;
+  left: 45%;
   border-top: 0px solid transparent;
   border-right: 180px solid transparent;
   border-bottom: 330px solid var(--light-teal);
@@ -134,10 +132,8 @@ main {
 }
 
 .mountain3::after {
-  position: fixed;
+  position: absolute;
   content: " ";
-  bottom: 0;
-  right: -50px;
   border-top: 0px solid transparent;
   border-right: 180px solid transparent;
   border-bottom: 330px solid var(--dark-teal);
