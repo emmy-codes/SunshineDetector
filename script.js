@@ -24,7 +24,7 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
   
         const requestURL = url.concat("?key=",apiKey,"&lat=", lat, "&lng=", long)
   
-        get(requestURL)
+        fetch(requestURL)
         .then(response => response.json())
         .then(data => console.log(data));
       }
