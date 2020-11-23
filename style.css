@@ -75,46 +75,46 @@ main {
   position: absolute;
   content: " ";
   bottom: -20px;
-  left: 8%;
+  left: -150px;
   border-top: 0px solid transparent;
-  border-right: 180px solid transparent;
-  border-bottom: 35rem solid var(--special-light-teal);
-  border-left: 180px solid transparent;
-  z-index: 5;
+  border-right: 220px solid transparent;
+  border-bottom: 420px solid var(--light-teal);
+  border-left: 220px solid transparent;
+  z-index: 7;
 }
 
 .mountain1::after {
   position: absolute;
   content: " ";
   border-top: 0px solid transparent;
-  border-right: 140px solid transparent;
-  border-bottom: 30rem solid var(--special-dark-teal);
+  border-right: 130px solid transparent;
+  border-bottom: 420px solid var(--dark-teal);
   border-left: 0px solid transparent;
-  z-index: 5;
+  z-index: 7;
   transform-origin: top right;
-  transform: skewX(15deg);
+  transform: skewX(20deg);
 }
 
 .mountain2 {
   position: absolute;
   content: " ";
   bottom: -20px;
-  left: -35%;
+  left: -10px;
   border-top: 0px solid transparent;
-  border-right: 220px solid transparent;
-  border-bottom: 440px solid var(--light-teal);
-  border-left: 220px solid transparent;
-  z-index: 7;
+  border-right: 300px solid transparent;
+  border-bottom: 470px solid var(--special-light-teal);
+  border-left: 300px solid transparent;
+  z-index: 5;
 }
 
 .mountain2::after {
   position: absolute;
   content: " ";
   border-top: 0px solid transparent;
-  border-right: 130px solid transparent;
-  border-bottom: 440px solid var(--dark-teal);
+  border-right: 300px solid transparent;
+  border-bottom: 470px solid var(--special-dark-teal);
   border-left: 0px solid transparent;
-  z-index: 7;
+  z-index: 5;
   transform-origin: top right;
   transform: skewX(20deg);
 }
@@ -123,10 +123,10 @@ main {
   position: absolute;
   content: " ";
   bottom: -20px;
-  left: 45%;
+  left: 300px;
   border-top: 0px solid transparent;
   border-right: 180px solid transparent;
-  border-bottom: 330px solid var(--light-teal);
+  border-bottom: 370px solid var(--light-teal);
   border-left: 180px solid transparent;
   z-index: 6;
 }
@@ -136,9 +136,372 @@ main {
   content: " ";
   border-top: 0px solid transparent;
   border-right: 180px solid transparent;
-  border-bottom: 330px solid var(--dark-teal);
+  border-bottom: 370px solid var(--dark-teal);
   border-left: 0px solid transparent;
   z-index: 6;
   transform-origin: top right;
   transform: skewX(15deg);
+}
+
+.mountain4 {
+  position: absolute;
+  content: " ";
+  bottom: -20px;
+  left: 490px;
+  border-top: 0px solid transparent;
+  border-right: 220px solid transparent;
+  border-bottom: 420px solid var(--light-teal);
+  border-left: 220px solid transparent;
+  z-index: 7;
+}
+
+.mountain4::after {
+  position: absolute;
+  content: " ";
+  border-top: 0px solid transparent;
+  border-right: 130px solid transparent;
+  border-bottom: 420px solid var(--dark-teal);
+  border-left: 0px solid transparent;
+  z-index: 7;
+  transform-origin: top right;
+  transform: skewX(20deg);
+}
+
+.mountain5 {
+  position: absolute;
+  content: " ";
+  bottom: -20px;
+  left: 630px;
+  border-top: 0px solid transparent;
+  border-right: 300px solid transparent;
+  border-bottom: 470px solid var(--special-light-teal);
+  border-left: 300px solid transparent;
+  z-index: 5;
+}
+
+.mountain5::after {
+  position: absolute;
+  content: " ";
+  border-top: 0px solid transparent;
+  border-right: 300px solid transparent;
+  border-bottom: 470px solid var(--special-dark-teal);
+  border-left: 0px solid transparent;
+  z-index: 5;
+  transform-origin: top right;
+  transform: skewX(20deg);
+}
+
+.mountain6 {
+  position: absolute;
+  content: " ";
+  bottom: -20px;
+  left: 950px;
+  border-top: 0px solid transparent;
+  border-right: 180px solid transparent;
+  border-bottom: 370px solid var(--light-teal);
+  border-left: 180px solid transparent;
+  z-index: 6;
+}
+
+.mountain6::after {
+  position: absolute;
+  content: " ";
+  border-top: 0px solid transparent;
+  border-right: 180px solid transparent;
+  border-bottom: 370px solid var(--dark-teal);
+  border-left: 0px solid transparent;
+  z-index: 6;
+  transform-origin: top right;
+  transform: skewX(15deg);
+}
+
+.mountain7 {
+  position: absolute;
+  content: " ";
+  bottom: -20px;
+  left: 1140px;
+  border-top: 0px solid transparent;
+  border-right: 220px solid transparent;
+  border-bottom: 420px solid var(--light-teal);
+  border-left: 220px solid transparent;
+  z-index: 7;
+}
+
+.mountain7::after {
+  position: absolute;
+  content: " ";
+  border-top: 0px solid transparent;
+  border-right: 130px solid transparent;
+  border-bottom: 420px solid var(--dark-teal);
+  border-left: 0px solid transparent;
+  z-index: 7;
+  transform-origin: top right;
+  transform: skewX(20deg);
+}
+
+.mountain8 {
+  position: absolute;
+  content: " ";
+  bottom: -20px;
+  left: 1280px;
+  border-top: 0px solid transparent;
+  border-right: 300px solid transparent;
+  border-bottom: 470px solid var(--special-light-teal);
+  border-left: 300px solid transparent;
+  z-index: 5;
+}
+
+.mountain8::after {
+  position: absolute;
+  content: " ";
+  border-top: 0px solid transparent;
+  border-right: 300px solid transparent;
+  border-bottom: 470px solid var(--special-dark-teal);
+  border-left: 0px solid transparent;
+  z-index: 5;
+  transform-origin: top right;
+  transform: skewX(20deg);
+}
+
+.mountain9 {
+  position: absolute;
+  content: " ";
+  bottom: -20px;
+  left: 1570px;
+  border-top: 0px solid transparent;
+  border-right: 180px solid transparent;
+  border-bottom: 370px solid var(--light-teal);
+  border-left: 180px solid transparent;
+  z-index: 6;
+}
+
+.mountain9::after {
+  position: absolute;
+  content: " ";
+  border-top: 0px solid transparent;
+  border-right: 180px solid transparent;
+  border-bottom: 370px solid var(--dark-teal);
+  border-left: 0px solid transparent;
+  z-index: 6;
+  transform-origin: top right;
+  transform: skewX(15deg);
+}
+
+@media only screen and (max-height: 670px) {
+  
+  .mountain1 {
+    position: absolute;
+    content: " ";
+    bottom: -20px;
+    left: -150px;
+    border-top: 0px solid transparent;
+    border-right: 220px solid transparent;
+    border-bottom: 320px solid var(--light-teal);
+    border-left: 220px solid transparent;
+    z-index: 7;
+  }
+  
+  .mountain1::after {
+    position: absolute;
+    content: " ";
+    border-top: 0px solid transparent;
+    border-right: 130px solid transparent;
+    border-bottom: 320px solid var(--dark-teal);
+    border-left: 0px solid transparent;
+    z-index: 7;
+    transform-origin: top right;
+    transform: skewX(20deg);
+  }
+  
+  .mountain2 {
+    position: absolute;
+    content: " ";
+    bottom: -20px;
+    left: -10px;
+    border-top: 0px solid transparent;
+    border-right: 300px solid transparent;
+    border-bottom: 370px solid var(--special-light-teal);
+    border-left: 300px solid transparent;
+    z-index: 5;
+  }
+  
+  .mountain2::after {
+    position: absolute;
+    content: " ";
+    border-top: 0px solid transparent;
+    border-right: 300px solid transparent;
+    border-bottom: 370px solid var(--special-dark-teal);
+    border-left: 0px solid transparent;
+    z-index: 5;
+    transform-origin: top right;
+    transform: skewX(20deg);
+  }
+  
+  .mountain3 {
+    position: absolute;
+    content: " ";
+    bottom: -20px;
+    left: 300px;
+    border-top: 0px solid transparent;
+    border-right: 180px solid transparent;
+    border-bottom: 270px solid var(--light-teal);
+    border-left: 180px solid transparent;
+    z-index: 6;
+  }
+  
+  .mountain3::after {
+    position: absolute;
+    content: " ";
+    border-top: 0px solid transparent;
+    border-right: 180px solid transparent;
+    border-bottom: 270px solid var(--dark-teal);
+    border-left: 0px solid transparent;
+    z-index: 6;
+    transform-origin: top right;
+    transform: skewX(15deg);
+  }
+  
+  .mountain4 {
+    position: absolute;
+    content: " ";
+    bottom: -20px;
+    left: 490px;
+    border-top: 0px solid transparent;
+    border-right: 220px solid transparent;
+    border-bottom: 320px solid var(--light-teal);
+    border-left: 220px solid transparent;
+    z-index: 7;
+  }
+  
+  .mountain4::after {
+    position: absolute;
+    content: " ";
+    border-top: 0px solid transparent;
+    border-right: 130px solid transparent;
+    border-bottom: 320px solid var(--dark-teal);
+    border-left: 0px solid transparent;
+    z-index: 7;
+    transform-origin: top right;
+    transform: skewX(20deg);
+  }
+  
+  .mountain5 {
+    position: absolute;
+    content: " ";
+    bottom: -20px;
+    left: 630px;
+    border-top: 0px solid transparent;
+    border-right: 300px solid transparent;
+    border-bottom: 370px solid var(--special-light-teal);
+    border-left: 300px solid transparent;
+    z-index: 5;
+  }
+  
+  .mountain5::after {
+    position: absolute;
+    content: " ";
+    border-top: 0px solid transparent;
+    border-right: 300px solid transparent;
+    border-bottom: 370px solid var(--special-dark-teal);
+    border-left: 0px solid transparent;
+    z-index: 5;
+    transform-origin: top right;
+    transform: skewX(20deg);
+  }
+  
+  .mountain6 {
+    position: absolute;
+    content: " ";
+    bottom: -20px;
+    left: 950px;
+    border-top: 0px solid transparent;
+    border-right: 180px solid transparent;
+    border-bottom: 270px solid var(--light-teal);
+    border-left: 180px solid transparent;
+    z-index: 6;
+  }
+  
+  .mountain6::after {
+    position: absolute;
+    content: " ";
+    border-top: 0px solid transparent;
+    border-right: 180px solid transparent;
+    border-bottom: 270px solid var(--dark-teal);
+    border-left: 0px solid transparent;
+    z-index: 6;
+    transform-origin: top right;
+    transform: skewX(15deg);
+  }
+  
+  .mountain7 {
+    position: absolute;
+    content: " ";
+    bottom: -20px;
+    left: 1140px;
+    border-top: 0px solid transparent;
+    border-right: 220px solid transparent;
+    border-bottom: 320px solid var(--light-teal);
+    border-left: 220px solid transparent;
+    z-index: 7;
+  }
+  
+  .mountain7::after {
+    position: absolute;
+    content: " ";
+    border-top: 0px solid transparent;
+    border-right: 130px solid transparent;
+    border-bottom: 320px solid var(--dark-teal);
+    border-left: 0px solid transparent;
+    z-index: 7;
+    transform-origin: top right;
+    transform: skewX(20deg);
+  }
+  
+  .mountain8 {
+    position: absolute;
+    content: " ";
+    bottom: -20px;
+    left: 1280px;
+    border-top: 0px solid transparent;
+    border-right: 300px solid transparent;
+    border-bottom: 370px solid var(--special-light-teal);
+    border-left: 300px solid transparent;
+    z-index: 5;
+  }
+  
+  .mountain8::after {
+    position: absolute;
+    content: " ";
+    border-top: 0px solid transparent;
+    border-right: 300px solid transparent;
+    border-bottom: 370px solid var(--special-dark-teal);
+    border-left: 0px solid transparent;
+    z-index: 5;
+    transform-origin: top right;
+    transform: skewX(20deg);
+  }
+  
+  .mountain9 {
+    position: absolute;
+    content: " ";
+    bottom: -20px;
+    left: 1570px;
+    border-top: 0px solid transparent;
+    border-right: 180px solid transparent;
+    border-bottom: 270px solid var(--light-teal);
+    border-left: 180px solid transparent;
+    z-index: 6;
+  }
+  
+  .mountain9::after {
+    position: absolute;
+    content: " ";
+    border-top: 0px solid transparent;
+    border-right: 180px solid transparent;
+    border-bottom: 270px solid var(--dark-teal);
+    border-left: 0px solid transparent;
+    z-index: 6;
+    transform-origin: top right;
+    transform: skewX(15deg);
+  }
 }
