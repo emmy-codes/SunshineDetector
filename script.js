@@ -1,3 +1,12 @@
+const date = document.getElementById("date");
+const variations = {weekday : "long", month : "long", day : "numeric", year : "numeric"}
+const today = new Date();
+
+date.innerHTML = today.toLocaleDateString("en-US", variations);
+
+
+
+
 const options = {
     enableHighAccuracy: false, 
     maximumAge: 30000, 
@@ -24,7 +33,27 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
   
         const requestURL = url.concat("?key=",apiKey,"&lat=", lat, "&lng=", long)
   
-        fetch(requestURL)
-        .then(response => response.json())
-        .then(data => console.log(data));
-      }
+      //   fetch(requestURL)
+      //   .then(response => response.json())
+      //   .then(data => console.log(data));
+      // }
+
+      fetch(requestURL)
+      .then(response => response.json())
+      // .then(data => console.log(data))
+      .then(data => {
+          let sunset = data.sunset;
+          // console.log(sunset);
+  
+          let sunsetPrint = document.getElementById("time");
+          sunsetPrint.innerText = "Sunset: " + sunset;
+          
+      })
+
+      
+      // .catch(error => {
+      //     let errorText = document.getElementById("error")
+      //     errorText.innerText = "Sorry no sunset";
+      // });
+    
+  }
