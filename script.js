@@ -33,10 +33,10 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
   
         const requestURL = url.concat("?key=",apiKey,"&lat=", lat, "&lng=", long)
   
-      //   fetch(requestURL)
-      //   .then(response => response.json())
-      //   .then(data => console.log(data));
-      // }
+        fetch(requestURL)
+        .then(response => response.json())
+        .then(data => console.log(data));
+      }
 
       fetch(requestURL)
       .then(response => response.json())
