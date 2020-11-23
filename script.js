@@ -33,10 +33,10 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
   
         const requestURL = url.concat("?key=",apiKey,"&lat=", lat, "&lng=", long)
   
-        fetch(requestURL)
-        .then(response => response.json())
-        .then(data => console.log(data));
-      }
+      //   fetch(requestURL)
+      //   .then(response => response.json())
+      //   .then(data => console.log(data));
+      // }
 
       fetch(requestURL)
       .then(response => response.json())
@@ -49,6 +49,7 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
           sunsetPrint.innerText = "Sunset: " + sunset;
           
       })
+    }
 
       
       // .catch(error => {
@@ -56,4 +57,4 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
       //     errorText.innerText = "Sorry no sunset";
       // });
     
-  }
+  
