@@ -1,6 +1,7 @@
 const date = document.getElementById("date");
 const variations = {weekday : "long", month : "long", day : "numeric", year : "numeric"}
 const today = new Date();
+const errorModal = document.getElementById("error-modal")
 
 date.innerHTML = today.toLocaleDateString("en-US", variations);
 
@@ -22,7 +23,7 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
     }
 
     function error () {
-        alert('Sorry, no position available.');
+        errorModal.style.display = "block";
       }
 
       function getAPI (x, y) {
