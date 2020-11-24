@@ -1,5 +1,13 @@
+ //time-current
+ const time = document.getElementById("time");
+ const todayTime = new Date();
+ time.innerHTML =  todayTime.getHours() + ":" + todayTime.getMinutes() + ":" + todayTime.getSeconds();
+
+//show sunset time
+const sunsetPrint = document.getElementById("time-sun")
+
+//date
 const date = document.getElementById("date");
-const sunsetPrint = document.getElementById("time");
 const heading = document.getElementById("info");
 const counter = document.getElementById("countdown");
 const sun = document.getElementById("sun");
@@ -8,11 +16,13 @@ const variations = {weekday : "long", month : "long", day : "numeric", year : "n
 const today = new Date();
 const errorModal = document.getElementById("error-modal");
 
+//Counter time
+const counterHours = document.getElementById("hours");
+const counterMinutes = document.getElementById("minutes");
+const counterSeconds = document.getElementById("seconds");
+
 
 date.innerHTML = today.toLocaleDateString("en-US", variations);
-
-
-
 
 const options = {
     enableHighAccuracy: false, 
@@ -47,7 +57,7 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
         const apiKey = "S5RRHG5VS6G7CPBGRXUYUAVFS44W6ZXO"
   
         const requestURL = url.concat("?key=",apiKey,"&lat=", lat, "&lng=", long)
-
+        
         fetch(requestURL)
           .then(response => response.json())
           // .then(data => console.log(data))
@@ -75,6 +85,7 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
         document.body.style.background = "var(--dark-gray)";
 
         sun.style.display = "none";
+        time.style.display = "none";
         sunsetPrint.style.display = "none";
         date.style.color = "var(--light-peach)";
 
@@ -91,4 +102,22 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
         counter.style.color = "var(--light-peach)";
       }
     
-  
+    
+    //  function calculateCountdown(){
+    //     const second = 1000,
+    //           minute = second * 60,
+    //           hour = minute * 60;
+    //      let countdown = new Date(sunsetSetData)
+    //      console.log(countdown);
+
+    //     //   let x = setInterval(function(){
+    //     //   let now = new Date().getTime();
+    //     //   let distance = countdown - now;
+
+    //     // counterHours.innerText = Math.floor((distance / (hour))),
+    //     // counterMinutes.innerText = Math.floor((distance % (hour)) / (minute)),
+    //     // counterSeconds.innerText = Math.floor((distance % (minute)) / second);
+
+         
+    //  }
+    //  calculateCountdown();
