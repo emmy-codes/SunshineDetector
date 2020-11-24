@@ -29,10 +29,16 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
     }
 
     function error () {
-        displayErrorPage();
+        displayErrorPageStyles();
+        heading.innerText = "Tripped when looking for sunshine :(";
+        counter.innerHTML = "We could not find your location! Please refresh the page and allow us to see your location." + 
+        "<br/>" + "<div id=\"refresh-icon\"><i class=\"fas fa-redo\"></i></div>";
+
+        const refreshButton = document.getElementById("refresh-icon");
+        refreshButton.addEventListener("click", () => {
+          window.location.reload();
+        });
       }
-
-
 
       function getAPI (x, y) {
         const lat = x
@@ -41,56 +47,48 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
         const apiKey = "S5RRHG5VS6G7CPBGRXUYUAVFS44W6ZXO"
   
         const requestURL = url.concat("?key=",apiKey,"&lat=", lat, "&lng=", long)
-  
-      //   fetch(requestURL)
-      //   .then(response => response.json())
-      //   .then(data => console.log(data));
-      // }
 
-      fetch(requestURL)
-      .then(response => response.json())
-      // .then(data => console.log(data))
-      .then(data => {
+        fetch(requestURL)
+          .then(response => response.json())
+          // .then(data => console.log(data))
+          .then(data => {
           let sunset = data.sunset;
           // console.log(sunset);
-  
-          
           sunsetPrint.innerText = "Sunset: " + sunset;
-          
-      })
-      .catch(error => {
-        displayErrorPage();
-      })
-      };
+          })
+          .catch(error => {
+            displayErrorPageStyles();
+            heading.innerText = "Tripped when looking for sunshine :(";
+            counter.innerHTML = "Something went wrong when getting information regarding the sunset or sunrise. Please refresh the page so we can try get it for you again!" + 
+            "<br/>" + "<div id=\"refresh-icon\"><i class=\"fas fa-redo\"></i></div>";
 
-      function displayErrorPage() {
-        errorModal.style.display = "none";
+            const refreshButton = document.getElementById("refresh-icon");
+            refreshButton.addEventListener("click", () => {
+              window.location.reload();
+            });
+          })
+        };
+
+
+      function displayErrorPageStyles() {
+        // errorModal.style.display = "none";
         document.body.style.background = "var(--dark-gray)";
 
         sun.style.display = "none";
         sunsetPrint.style.display = "none";
-
         date.style.color = "var(--light-peach)";
+
         centerText.style.marginTop = "15vh"
-        
+
         heading.style.color = "var(--light-peach)";
         heading.style.fontSize = "3rem";
         heading.style.fontFamily = "var(--font-numbers)";
-        heading.innerText = "Tripped when looking for sunshine :(";
+        
 
         counter.style.fontFamily = "var(--font-text)";
         counter.style.fontWeight = "700";
         counter.style.fontSize = "2rem";
-        counter.innerHTML = "We could not find your location! Please refresh the page and allow us to see your location." + 
-        "<br/>" + "<div id=\"refresh-icon\"><i class=\"fas fa-redo\"></i></div>";
-
         counter.style.color = "var(--light-peach)";
-
-        const refreshButton = document.getElementById("refresh-icon");
-        refreshButton.addEventListener("click", () => {
-          window.location.reload();
-        });
-      
       }
     
   

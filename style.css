@@ -96,9 +96,9 @@ main {
   border-radius: 30px;
   text-align: center;
   -webkit-animation-name: fadein;
-  -webkit-animation-duration: 1s;
+  -webkit-animation-duration: 0.5s;
   animation-name: fadein;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
 }
 
 @-webkit-keyframes fadein {
