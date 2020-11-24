@@ -16,6 +16,8 @@ const heading = document.getElementById("info");
 const counter = document.getElementById("countdown");
 const sun = document.getElementById("sun");
 const centerText = document.getElementById("center-text");
+const sky = document.getElementsByClassName("sky");
+const clouds = document.getElementsByClassName("clouds");
 
 // const errorModal = document.getElementById("error-modal");
 
@@ -105,12 +107,13 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
       }
 
       function activateNightMode() {
-        document.body.style.background = "var(--dark-gray)";
+        document.body.style.background = "black";
         centerText.style.color = "var(--light-peach)";
         header.style.color = "var(--light-peach)";
         sun.classList.add('moon');
+        sky[0].classList.add('nightsky');
+        clouds[0].classList.add('twinkles');
       }
-    
     
     //  function calculateCountdown(){
     //     const second = 1000,
