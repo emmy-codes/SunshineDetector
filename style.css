@@ -104,33 +104,6 @@ header {
   font-family: var(--font-numbers);
 }
 
-#error-modal {
-  display: none;
-  position: fixed;
-  z-index: 80;
-  padding-top: 20vh;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: auto;
-}
-
-.error-modal-content {
-  background-color: var(--linen);
-  font-family: var(--font-text);
-  margin: 0 auto;
-  padding: 50px 50px 40px 50px;
-  border: 1px solid var(--dark-gray);
-  width: 70vw;
-  border-radius: 30px;
-  text-align: center;
-  -webkit-animation-name: fadein;
-  -webkit-animation-duration: 0.5s;
-  animation-name: fadein;
-  animation-duration: 0.5s;
-}
-
 @-webkit-keyframes fadein {
   from {
     opacity: 0;
