@@ -24,7 +24,13 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
 
     function error () {
         errorModal.style.display = "block";
+        let refreshButton = document.getElementById("refresh-icon");
+        refreshButton.addEventListener("click", refreshPage);
       }
+
+    function refreshPage() {
+      window.location.reload();
+    }
 
       function getAPI (x, y) {
         const lat = x
@@ -50,12 +56,14 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
           sunsetPrint.innerText = "Sunset: " + sunset;
           
       })
-    }
+      }
 
       
       // .catch(error => {
       //     let errorText = document.getElementById("error")
       //     errorText.innerText = "Sorry no sunset";
       // });
+
+
     
   

@@ -81,19 +81,34 @@ main {
   width: 100vw;
   height: 100vh;
   overflow: auto;
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 .error-modal-content {
   background-color: var(--linen);
   font-family: var(--font-text);
   margin: 0 auto;
-  padding: 50px;
+  padding: 50px 50px 40px 50px;
   border: 1px solid var(--dark-gray);
   width: 70vw;
   border-radius: 30px;
   text-align: center;
+  -webkit-animation-name: fadein;
+  -webkit-animation-duration: 1s;
+  animation-name: fadein;
+  animation-duration: 1s;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#refresh-icon {
+  padding-top: 15px;
 }
 
 /*------------------- Mountains --------------------*/
