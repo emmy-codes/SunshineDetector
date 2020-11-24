@@ -4,7 +4,7 @@
  time.innerHTML =  todayTime.getHours() + ":" + todayTime.getMinutes() + ":" + todayTime.getSeconds();
 
 //show sunset time
-const sunsetPrint = document.getElementById("time-sun")
+const sunsetPrint = document.getElementById("time-sun");
 
 //date
 const date = document.getElementById("date");
@@ -14,7 +14,7 @@ const sun = document.getElementById("sun");
 const centerText = document.getElementById("center-text");
 const variations = {weekday : "long", month : "long", day : "numeric", year : "numeric"}
 const today = new Date();
-const errorModal = document.getElementById("error-modal");
+// const errorModal = document.getElementById("error-modal");
 
 //Counter time
 const counterHours = document.getElementById("hours");
@@ -87,6 +87,7 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
         sun.style.display = "none";
         time.style.display = "none";
         sunsetPrint.style.display = "none";
+
         date.style.color = "var(--light-peach)";
 
         centerText.style.marginTop = "15vh"
