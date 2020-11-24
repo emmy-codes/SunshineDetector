@@ -18,15 +18,24 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <header class="top">
-      <div id="date" class="date">Today's date</div>
-      <div id="time" class="time">Sunset: 13:37</div>
+    <header>
+      <div class="top">
+        <div id="date" class="date">Today's date</div>
+        <div id="time-sun" class="time-sun">Time of sunset:</div>
+      </div>
+      <div class="time" id="time"></div>
     </header>
     <main>
       <div class="sun"></div>
       <section class="center-text">
         <div class="info">Time until sunset</div>
-        <div class="countdown">05:33:28</div>
+        <div class="countdown">
+          <ul>
+            <li id="hours">00:</li>
+            <li id="minutes">00:</li>
+            <li id="seconds">00</li>
+          </ul>
+        </div>
       </section>
       <footer class="bottom">
         <div class="mountain1"></div>
