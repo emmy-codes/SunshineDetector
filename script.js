@@ -52,14 +52,10 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
           sunsetPrint.innerText = "Sunset: " + sunset;
           
       })
-      }
-
-      
-      // .catch(error => {
-      //     let errorText = document.getElementById("error")
-      //     errorText.innerText = "Sorry no sunset";
-      // });
-
+      .catch(error => {
+        displayErrorPage();
+      })
+      };
 
       function displayErrorPage() {
         errorModal.style.display = "block";
