@@ -38,7 +38,7 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
         getAPI(latitude, longitude);
     }
 
-    function error () {
+      function error () {
         displayErrorPageStyles();
         heading.innerText = "Tripped when looking for sunshine :(";
         counter.innerHTML = "We could not find your location! Please refresh the page and allow us to see your location." + 
@@ -48,7 +48,7 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
         refreshButton.addEventListener("click", () => {
           window.location.reload();
         });
-      }
+      };
 
       function getAPI (x, y) {
         const lat = x
@@ -66,18 +66,18 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
           // console.log(sunset);
           sunsetPrint.innerText = "Sunset: " + sunset;
           })
-          .catch(error => {
-            displayErrorPageStyles();
-            heading.innerText = "Tripped when looking for sunshine :(";
-            counter.innerHTML = "Something went wrong when getting information regarding the sunset or sunrise. Please refresh the page so we can try get it for you again!" + 
-            "<br/>" + "<div id=\"refresh-icon\"><i class=\"fas fa-redo\"></i></div>";
+          // .catch(error => {
+          //   displayErrorPageStyles();
+          //   heading.innerText = "Tripped when looking for sunshine :(";
+          //   counter.innerHTML = "Something went wrong when getting information regarding the sunset or sunrise. Please refresh the page so we can try get it for you again!" + 
+          //   "<br/>" + "<div id=\"refresh-icon\"><i class=\"fas fa-redo\"></i></div>";
 
-            const refreshButton = document.getElementById("refresh-icon");
-            refreshButton.addEventListener("click", () => {
-              window.location.reload();
-            });
-          })
-        };
+          //   const refreshButton = document.getElementById("refresh-icon");
+          //   refreshButton.addEventListener("click", () => {
+          //     window.location.reload();
+          //   });
+          // })
+      };
 
 
       function displayErrorPageStyles() {
