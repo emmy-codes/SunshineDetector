@@ -23,14 +23,10 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
     }
 
     function error () {
-        errorModal.style.display = "block";
-        let refreshButton = document.getElementById("refresh-icon");
-        refreshButton.addEventListener("click", refreshPage);
+        displayErrorPage();
       }
 
-    function refreshPage() {
-      window.location.reload();
-    }
+
 
       function getAPI (x, y) {
         const lat = x
@@ -65,5 +61,13 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
       // });
 
 
+      function displayErrorPage() {
+        errorModal.style.display = "block";
+        const refreshButton = document.getElementById("refresh-icon");
+
+        refreshButton.addEventListener("click", () => {
+          window.location.reload();
+        });
+      }
     
   
