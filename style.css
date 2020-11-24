@@ -39,7 +39,8 @@ main {
   font-weight: 700;
 }
 
-.sun {
+#sun {
+  display: block;
   content: "";
   position: absolute;
   border-radius: 50%;
@@ -56,17 +57,19 @@ main {
     transform: translateX(30px);
 } */
 
-.center-text {
+#center-text {
+  margin: 0 auto;
   text-align: center;
   margin-top: 25vh;
   color: var(--dark-gray);
+  width: 70vw;
 }
 
-.info {
+#info {
   font-family: var(--font-text);
   font-weight: 700;
 }
-.countdown {
+#countdown {
   font-size: 4rem;
   font-family: var(--font-numbers);
 }
