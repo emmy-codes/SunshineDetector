@@ -37,19 +37,48 @@ header {
 }
 .top {
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
 }
 
 #sun {
   display: block;
   content: "";
   position: absolute;
+  top: 0;
+  left: 15vw;
+  z-index: -10;
+}
+
+.sun {
   border-radius: 50%;
   background: var(--dark-peach);
   height: var(--sun-size);
   width: var(--sun-size);
+}
+
+.moon {
+  display: block;
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: var(--linen);
+  height: var(--sun-size);
+  width: var(--sun-size);
   top: 0;
   left: 15vw;
+  z-index: -10;
+}
+
+.moon::after {
+  display: block;
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: var(--dark-gray);
+  height: var(--sun-size);
+  width: var(--sun-size);
+  top: 0;
+  left: 30px;
   z-index: -10;
 }
 
@@ -111,10 +140,18 @@ header {
   }
 }
 
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 #refresh-icon {
   padding-top: 15px;
 }
-
 
 ul {
   display: flex;
@@ -125,7 +162,6 @@ ul {
 ul li {
   list-style-type: none;
 }
-
 
 /*------------------- Mountains --------------------*/
 .mountain1 {
