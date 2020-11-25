@@ -41,7 +41,7 @@ const options = {
     timeout: 10000
   };
 
-// const getLocation = navigator.geolocation.getCurrentPosition(success, error, options);
+const getLocation = navigator.geolocation.getCurrentPosition(success, error, options);
 
     function success(position) {
         let latitude = position.coords.latitude;
@@ -132,7 +132,7 @@ const options = {
     counter.innerText = hours + "h " + minutes + "m " + seconds + "s ";
 
     if (distance < 0) {
-      // calculateCountDownSunrise();
+      calculateCountDownSunrise();
       clearInterval(x);
       }
     }, 1000);
@@ -141,17 +141,19 @@ const options = {
 
   function calculateCountDownSunrise() {
     heading.innerText = "Time until sunrise";
-      
+    sunsetPrint.innerText ="Sunrise: " + sunrise
+    activateNightMode();
+
     let sunArr = sunrise.split(':');
     let calculateSunriseDate = new Date();
-    let calsun = calculateSunriseDate.setHours(parseInt(sunArr[0]), parseInt(sunArr[1]))
-    let countDownDate = calculateSunriseDate.getTime();
+    let calsun = calculateSunriseDate.setHours(parseInt(sunArr[0]), parseInt(sunArr[1]));
+    let calsun2 = new Date(calsun);
+    calsun2.setDate(calsun2.getDate() + 1);
 
     let y = setInterval(function() {
       let today = new Date().getTime();
   
-      let distance = calsun - today;
-     distance = (midnight - today) + (calsun - today)
+      let distance = calsun2 - today;
   
       let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
