@@ -38,20 +38,47 @@ header {
 .top {
   display: flex;
   justify-content: space-between;
-  
-  
 }
 
 #sun {
   display: block;
   content: "";
   position: absolute;
+  top: 0;
+  left: 15vw;
+  z-index: -10;
+}
+
+.sun {
   border-radius: 50%;
   background: var(--dark-peach);
   height: var(--sun-size);
   width: var(--sun-size);
+}
+
+.moon {
+  display: block;
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: var(--linen);
+  height: var(--sun-size);
+  width: var(--sun-size);
   top: 0;
   left: 15vw;
+  z-index: -10;
+}
+
+.moon::after {
+  display: block;
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: var(--dark-gray);
+  height: var(--sun-size);
+  width: var(--sun-size);
+  top: 0;
+  left: 30px;
   z-index: -10;
 }
 
@@ -77,34 +104,16 @@ header {
   font-family: var(--font-numbers);
 }
 
-#error-modal {
-  display: none;
-  position: fixed;
-  z-index: 80;
-  padding-top: 20vh;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: auto;
-}
-
-.error-modal-content {
-  background-color: var(--linen);
-  font-family: var(--font-text);
-  margin: 0 auto;
-  padding: 50px 50px 40px 50px;
-  border: 1px solid var(--dark-gray);
-  width: 70vw;
-  border-radius: 30px;
-  text-align: center;
-  -webkit-animation-name: fadein;
-  -webkit-animation-duration: 0.5s;
-  animation-name: fadein;
-  animation-duration: 0.5s;
-}
-
 @-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
   from {
     opacity: 0;
   }
@@ -117,7 +126,6 @@ header {
   padding-top: 15px;
 }
 
-
 ul {
   display: flex;
   flex-direction: row;
@@ -127,7 +135,6 @@ ul {
 ul li {
   list-style-type: none;
 }
-
 
 /*------------------- Mountains --------------------*/
 .mountain1 {

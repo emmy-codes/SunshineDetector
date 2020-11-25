@@ -4,17 +4,20 @@
  time.innerHTML =  todayTime.getHours() + ":" + todayTime.getMinutes() + ":" + todayTime.getSeconds();
 
 //show sunset time
-const sunsetPrint = document.getElementById("time-sun")
+const sunsetPrint = document.getElementById("time-sun");
 
 //date
 const date = document.getElementById("date");
+const variations = {weekday : "long", month : "long", day : "numeric", year : "numeric"}
+const today = new Date();
+
+const header = document.getElementById("header")
 const heading = document.getElementById("info");
 const counter = document.getElementById("countdown");
 const sun = document.getElementById("sun");
 const centerText = document.getElementById("center-text");
-const variations = {weekday : "long", month : "long", day : "numeric", year : "numeric"}
-const today = new Date();
-const errorModal = document.getElementById("error-modal");
+
+// const errorModal = document.getElementById("error-modal");
 
 //Counter time
 const counterHours = document.getElementById("hours");
@@ -29,6 +32,7 @@ const options = {
     maximumAge: 30000, 
     timeout: 10000
   };
+
 const getLocation = navigator.geolocation.getCurrentPosition(success, error, options);
 
     function success(position) {
@@ -81,17 +85,16 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
 
 
       function displayErrorPageStyles() {
-        // errorModal.style.display = "none";
         document.body.style.background = "var(--dark-gray)";
 
         sun.style.display = "none";
         time.style.display = "none";
         sunsetPrint.style.display = "none";
+
         date.style.color = "var(--light-peach)";
+        centerText.style.marginTop = "15vh";
+        centerText.style.color = "var(--light-peach)";
 
-        centerText.style.marginTop = "15vh"
-
-        heading.style.color = "var(--light-peach)";
         heading.style.fontSize = "3rem";
         heading.style.fontFamily = "var(--font-numbers)";
         
@@ -99,7 +102,13 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
         counter.style.fontFamily = "var(--font-text)";
         counter.style.fontWeight = "700";
         counter.style.fontSize = "2rem";
-        counter.style.color = "var(--light-peach)";
+      }
+
+      function activateNightMode() {
+        document.body.style.background = "var(--dark-gray)";
+        centerText.style.color = "var(--light-peach)";
+        header.style.color = "var(--light-peach)";
+        sun.classList.add('moon');
       }
     
     
