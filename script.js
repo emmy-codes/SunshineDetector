@@ -1,7 +1,7 @@
  //time-current
  const time = document.getElementById("time");
- const todayTime = new Date();
- time.innerHTML =  todayTime.getHours() + ":" + todayTime.getMinutes() + ":" + todayTime.getSeconds();
+//  const todayTime = new Date();
+//  time.innerHTML =  todayTime.getHours() + ":" + todayTime.getMinutes();
 
 //show sunset time
 const sunsetPrint = document.getElementById("time-sun");
@@ -26,6 +26,24 @@ let sunrise = "";
 
 date.innerHTML = today.toLocaleDateString("en-US", variations);
 
+function timeRightNow() {
+  setInterval(function() {
+    const todayTime = new Date();
+    let hours = todayTime.getHours();
+    let minutes = todayTime.getMinutes();
+
+      if (hours < 10) {
+        hours = '0' + hours
+      }
+      if (minutes < 10) {
+        minutes = '0' + minutes
+      }
+      time.innerHTML = hours + ":" + minutes;
+    }, 1000);
+}
+timeRightNow();
+
+
 const options = {
     enableHighAccuracy: false, 
     maximumAge: 30000, 
@@ -38,7 +56,7 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
         let latitude = position.coords.latitude;
         let longitude = position.coords.longitude;
         console.log(longitude, latitude)
-        getAPI(latitude, longitude);
+        // getAPI(latitude, longitude);
     }
 
       function error () {
@@ -71,27 +89,39 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
           sunsetPrint.innerText = "Sunset: " + sunset;
           console.log(sunset)
           calculateCountDown();
-        })
-      } 
+          })
+          .catch(error => {
+            displayErrorPageStyles();
+            heading.innerText = "Tripped when looking for sunshine :(";
+            counter.innerHTML = "Something went wrong when getting information regarding the sunset or sunrise. Please refresh the page so we can try get it for you again!" + 
+            "<br/>" + "<div id=\"refresh-icon\"><i class=\"fas fa-redo\"></i></div>";
+            const refreshButton = document.getElementById("refresh-icon");
+            refreshButton.addEventListener("click", () => {
+              window.location.reload();
+            });
+          });
+        }; 
 
       function displayErrorPageStyles() {
         document.body.style.background = "var(--dark-gray)";
 
         sun.style.display = "none";
-        time.style.display = "none";
+        
         sunsetPrint.style.display = "none";
 
         date.style.color = "var(--light-peach)";
         centerText.style.marginTop = "15vh";
         centerText.style.color = "var(--light-peach)";
+        time.style.color = "var(--light-peach)";
 
-        heading.style.fontSize = "3rem";
+        heading.style.fontSize = "2.5rem";
         heading.style.fontFamily = "var(--font-numbers)";
         
 
         counter.style.fontFamily = "var(--font-text)";
         counter.style.fontWeight = "700";
-        counter.style.fontSize = "2rem";
+        counter.style.fontSize = "1rem"
+        counter.style.paddingTop = "10px";
       }
 
       function activateNightMode() {
@@ -123,7 +153,7 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
     counter.innerText = hours + "h " + minutes + "m " + seconds + "s ";
 
     if (distance < 0) {
-      // calculateCountDownSunrise();
+      calculateCountDownSunrise();
       clearInterval(x);
       }
     }, 1000);
@@ -132,17 +162,19 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
 
   function calculateCountDownSunrise() {
     heading.innerText = "Time until sunrise";
-      
+    sunsetPrint.innerText ="Sunrise: " + sunrise
+    activateNightMode();
+
     let sunArr = sunrise.split(':');
     let calculateSunriseDate = new Date();
-    let calsun = calculateSunriseDate.setHours(parseInt(sunArr[0]), parseInt(sunArr[1]))
-    let countDownDate = calculateSunriseDate.getTime();
+    let calsun = calculateSunriseDate.setHours(parseInt(sunArr[0]), parseInt(sunArr[1]));
+    let calsun2 = new Date(calsun);
+    calsun2.setDate(calsun2.getDate() + 1);
 
     let y = setInterval(function() {
       let today = new Date().getTime();
   
-      let distance = calsun - today;
-     distance = (midnight - today) + (calsun - today)
+      let distance = calsun2 - today;
   
       let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
