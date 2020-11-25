@@ -57,7 +57,7 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
         let latitude = position.coords.latitude;
         let longitude = position.coords.longitude;
         console.log(longitude, latitude)
-        // getAPI(latitude, longitude);
+        getAPI(latitude, longitude);
     }
 
       function error () {
