@@ -71,7 +71,12 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
           sunsetPrint.innerText = "Sunset: " + sunset;
           console.log(sunset)
           calculateCountDown();
+          const info = document.querySelector("#info");
+          info.classList.remove("hidden");
+          const hideLoading = document.querySelector(".loader");
+          hideLoading.classList.add("hidden");
         })
+        
       } 
 
       function displayErrorPageStyles() {
