@@ -19,13 +19,10 @@ const centerText = document.getElementById("center-text");
 const sky = document.getElementsByClassName("sky");
 const clouds = document.getElementsByClassName("clouds");
 
-// const errorModal = document.getElementById("error-modal");
 
-//Counter time
-const counterHours = document.getElementById("hours");
-const counterMinutes = document.getElementById("minutes");
-const counterSeconds = document.getElementById("seconds");
-
+// API information
+let sunset = "";
+let sunrise = "";
 
 date.innerHTML = today.toLocaleDateString("en-US", variations);
 
@@ -68,23 +65,14 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
           .then(response => response.json())
           // .then(data => console.log(data))
           .then(data => {
-          let sunset = data.sunset;
+          sunset = data.sunset;
+          sunrise = data.sunrise;
           // console.log(sunset);
           sunsetPrint.innerText = "Sunset: " + sunset;
-          })
-          // .catch(error => {
-          //   displayErrorPageStyles();
-          //   heading.innerText = "Tripped when looking for sunshine :(";
-          //   counter.innerHTML = "Something went wrong when getting information regarding the sunset or sunrise. Please refresh the page so we can try get it for you again!" + 
-          //   "<br/>" + "<div id=\"refresh-icon\"><i class=\"fas fa-redo\"></i></div>";
-
-          //   const refreshButton = document.getElementById("refresh-icon");
-          //   refreshButton.addEventListener("click", () => {
-          //     window.location.reload();
-          //   });
-          // })
-      };
-
+          console.log(sunset)
+          calculateCountDown();
+        })
+      } 
 
       function displayErrorPageStyles() {
         document.body.style.background = "var(--dark-gray)";
@@ -114,22 +102,57 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
         sky[0].classList.add('nightsky');
         clouds[0].classList.add('twinkles');
       }
-    
-    //  function calculateCountdown(){
-    //     const second = 1000,
-    //           minute = second * 60,
-    //           hour = minute * 60;
-    //      let countdown = new Date(sunsetSetData)
-    //      console.log(countdown);
 
-    //     //   let x = setInterval(function(){
-    //     //   let now = new Date().getTime();
-    //     //   let distance = countdown - now;
 
-    //     // counterHours.innerText = Math.floor((distance / (hour))),
-    //     // counterMinutes.innerText = Math.floor((distance % (hour)) / (minute)),
-    //     // counterSeconds.innerText = Math.floor((distance % (minute)) / second);
+  function calculateCountDown () {
+    let sunArr = sunset.split(':');
+    let calculateSunsetDate = new Date();
+    let calsun = calculateSunsetDate.setHours(parseInt(sunArr[0]), parseInt(sunArr[1]));
 
-         
-    //  }
-    //  calculateCountdown();
+   let countDownDate = calculateSunsetDate.getTime();
+
+   let x = setInterval(function() {
+    let today = new Date().getTime();
+
+    let distance = calsun - today;
+
+    let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    counter.innerText = hours + "h " + minutes + "m " + seconds + "s ";
+
+    if (distance < 0) {
+      // calculateCountDownSunrise();
+      clearInterval(x);
+      }
+    }, 1000);
+  }
+      
+
+  function calculateCountDownSunrise() {
+    heading.innerText = "Time until sunrise";
+      
+    let sunArr = sunrise.split(':');
+    let calculateSunriseDate = new Date();
+    let calsun = calculateSunriseDate.setHours(parseInt(sunArr[0]), parseInt(sunArr[1]))
+    let countDownDate = calculateSunriseDate.getTime();
+
+    let y = setInterval(function() {
+      let today = new Date().getTime();
+  
+      let distance = calsun - today;
+     distance = (midnight - today) + (calsun - today)
+  
+      let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  
+      counter.innerText = hours + "h " + minutes + "m " + seconds + "s ";
+
+        if (distance < 0) {
+          clearInterval(y);
+          window.location.reload();
+          }
+      }, 1000);
+  }

@@ -166,16 +166,6 @@ header {
   padding-top: 15px;
 }
 
-ul {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-ul li {
-  list-style-type: none;
-}
-
 /*------------------- Mountains --------------------*/
 .mountain1 {
   position: absolute;
