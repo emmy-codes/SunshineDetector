@@ -1,7 +1,7 @@
  //time-current
  const time = document.getElementById("time");
- const todayTime = new Date();
- time.innerHTML =  todayTime.getHours() + ":" + todayTime.getMinutes() + ":" + todayTime.getSeconds();
+//  const todayTime = new Date();
+//  time.innerHTML =  todayTime.getHours() + ":" + todayTime.getMinutes();
 
 //show sunset time
 const sunsetPrint = document.getElementById("time-sun");
@@ -26,13 +26,22 @@ let sunrise = "";
 
 date.innerHTML = today.toLocaleDateString("en-US", variations);
 
+function timeRightNow() {
+  setInterval(function() {
+    const todayTime = new Date();
+    time.innerHTML =  todayTime.getHours() + ":" + todayTime.getMinutes();
+    }, 1000);
+}
+timeRightNow();
+
+
 const options = {
     enableHighAccuracy: false, 
     maximumAge: 30000, 
     timeout: 10000
   };
 
-const getLocation = navigator.geolocation.getCurrentPosition(success, error, options);
+// const getLocation = navigator.geolocation.getCurrentPosition(success, error, options);
 
     function success(position) {
         let latitude = position.coords.latitude;
