@@ -18,6 +18,7 @@ const sun = document.getElementById("sun");
 const centerText = document.getElementById("center-text");
 const sky = document.getElementsByClassName("sky");
 const clouds = document.getElementsByClassName("clouds");
+const hideLoading = document.querySelector(".loader");
 
 
 // API information
@@ -89,6 +90,8 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
           sunsetPrint.innerText = "Sunset: " + sunset;
           console.log(sunset)
           calculateCountDown();
+          heading.classList.remove("hidden");
+          hideLoading.classList.add("hidden");
           })
           .catch(error => {
             displayErrorPageStyles();
@@ -96,9 +99,9 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
             counter.innerHTML = "Something went wrong when getting information regarding the sunset or sunrise. Please refresh the page so we can try get it for you again!" + 
             "<br/>" + "<div id=\"refresh-icon\"><i class=\"fas fa-redo\"></i></div>";
             const refreshButton = document.getElementById("refresh-icon");
-            refreshButton.addEventListener("click", () => {
-              window.location.reload();
-            });
+              refreshButton.addEventListener("click", () => {
+                window.location.reload();
+              });
           });
         }; 
 
