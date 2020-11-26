@@ -35,10 +35,12 @@ header {
   font-weight: 700;
   margin: 1rem;
 }
-.top {
+.top,
+.top2 {
   display: flex;
   justify-content: space-between;
 }
+
 
 #sun {
   display: block;
@@ -54,8 +56,23 @@ header {
   background: var(--dark-peach);
   height: var(--sun-size);
   width: var(--sun-size);
+  animation: pulse-red 5s infinite;
+  margin: 1rem;
 }
 
+@keyframes pulse-red {
+	0% {
+		box-shadow: 0 0 0 0 rgba(255, 82, 82, 0.7);
+	}
+	
+	70% {	
+		box-shadow: 0 0 0 10px rgba(255, 82, 82, 0);
+	}
+	
+	100% { 
+		box-shadow: 0 0 0 0 rgba(255, 82, 82, 0);
+  }
+}
 .moon {
   display: block;
   content: "";
