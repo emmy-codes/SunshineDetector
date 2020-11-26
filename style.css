@@ -35,10 +35,12 @@ header {
   font-weight: 700;
   margin: 1rem;
 }
-.top {
+.top,
+.top2 {
   display: flex;
   justify-content: space-between;
 }
+
 
 #sun {
   display: block;

@@ -6,6 +6,9 @@
 //show sunset time
 const sunsetPrint = document.getElementById("time-sun");
 
+//show city
+const cityPrint = document.getElementById("city");
+
 //date
 const date = document.getElementById("date");
 const variations = {weekday : "long", month : "long", day : "numeric", year : "numeric"}
@@ -24,6 +27,7 @@ const hideLoading = document.querySelector(".loader");
 // API information
 let sunset = "";
 let sunrise = "";
+let city = "";
 
 date.innerHTML = today.toLocaleDateString("en-US", variations);
 
@@ -86,9 +90,11 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
           .then(data => {
           sunset = data.sunset;
           sunrise = data.sunrise;
-          // console.log(sunset);
+          city = data.city;
+          //console.log(sunset);
           sunsetPrint.innerText = "Sunset: " + sunset;
-          console.log(sunset)
+          cityPrint.innerText = "Location: " + city;
+          //console.log(sunset)
           calculateCountDown();
           heading.classList.remove("hidden");
           hideLoading.classList.add("hidden");
