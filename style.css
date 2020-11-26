@@ -30,11 +30,13 @@ main {
   position: relative;
   overflow: hidden;
 }
+
 header {
   font-family: var(--font-text);
   font-weight: 700;
   margin: 1rem;
 }
+
 .top,
 .top2 {
   display: flex;
@@ -640,6 +642,7 @@ header {
     transform-origin: top right;
     transform: skewX(15deg);
   }
+
   .mountain10 {
     position: absolute;
     content: " ";
@@ -677,7 +680,12 @@ header {
   position: relative; 
 } 
 
-.loader .loading_1 { 
+.loader-header { 
+  width: 100px; 
+  position: relative; 
+} 
+
+.loading_1 { 
   position: relative; 
   width: 100%; 
   height: 10px; 
@@ -686,7 +694,7 @@ header {
   animation: turn 4s linear 1.75s infinite;
 } 
 
-.loader .loading_1:before { 
+.loading_1:before { 
   content: ""; 
   display: block; 
   position: absolute; 
@@ -697,15 +705,17 @@ header {
   animation: load 2s linear infinite; 
 } 
 
-.loader .loading_2 { 
+.loading_2 { 
   position: absolute; 
   width: 100%; 
   top: 10px; 
   color: var(--dark-teal);
   font-size: 22px; 
+  font-weight: 700;
+  font-family: var(--font-text);
   text-align: center; 
   animation: bounce 2s linear infinite; 
-} 
+}
 
 @keyframes load { 
   0% { 
@@ -743,4 +753,4 @@ header {
   12.5% { 
       top: 30px; 
   } 
-} 
+}

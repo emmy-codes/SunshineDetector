@@ -23,7 +23,8 @@ const centerText = document.getElementById("center-text");
 const sky = document.getElementsByClassName("sky");
 const clouds = document.getElementsByClassName("clouds");
 const hideLoading = document.querySelector(".loader");
-
+const hideLoading2 = document.querySelector(".loader-header");
+const sunsetTimer = document.querySelector("#time-sun");
 
 // API information
 let sunset;
@@ -71,6 +72,7 @@ function success(position) {
 };
 
 function error () {
+  hideLoading.classList.add("hidden");
   displayErrorPageStyles();
   heading.innerText = "Tripped when looking for sunshine :(";
   counter.innerHTML = "We could not find your location! Please refresh the page and allow us to see your location." + 
@@ -110,6 +112,10 @@ fetch(requestURL)
       window.location.reload();
       });
    });
+  .finally(() => {
+      hideLoading.classList.add("hidden");
+      hideLoading2.classList.add("hidden");
+   }); 
 }; 
 
 function displayErrorPageStyles() {
