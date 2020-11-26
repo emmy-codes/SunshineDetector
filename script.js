@@ -19,7 +19,7 @@ const centerText = document.getElementById("center-text");
 const sky = document.getElementsByClassName("sky");
 const clouds = document.getElementsByClassName("clouds");
 const hideLoading = document.querySelector(".loader");
-
+const sunsetTimer = document.querySelector("#time-sun");
 
 // API information
 let sunset = "";
@@ -61,6 +61,7 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
     }
 
       function error () {
+        hideLoading.classList.add("hidden");
         displayErrorPageStyles();
         heading.innerText = "Tripped when looking for sunshine :(";
         counter.innerHTML = "We could not find your location! Please refresh the page and allow us to see your location." + 
@@ -76,10 +77,9 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
         const lat = x
         const long = y
         const url = "https://cors-anywhere.herokuapp.com/https://api.geodatasource.com/city"
-        const apiKey = "S5RRHG5VS6G7CPBGRXUYUAVFS44W6ZXO"
+        const apiKey = "JNHBEJJ3GUSDENNYOYFUIOOO7KM5PCZP"
   
         const requestURL = url.concat("?key=",apiKey,"&lat=", lat, "&lng=", long)
-        
         fetch(requestURL)
           .then(response => response.json())
           // .then(data => console.log(data))
@@ -91,9 +91,10 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
           console.log(sunset)
           calculateCountDown();
           heading.classList.remove("hidden");
-          hideLoading.classList.add("hidden");
+          sunsetTimer.classList.remove("hidden");
           })
           .catch(error => {
+            console.error(error);
             displayErrorPageStyles();
             heading.innerText = "Tripped when looking for sunshine :(";
             counter.innerHTML = "Something went wrong when getting information regarding the sunset or sunrise. Please refresh the page so we can try get it for you again!" + 
@@ -102,8 +103,12 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
               refreshButton.addEventListener("click", () => {
                 window.location.reload();
               });
-          });
+          })
+          .finally(() => {
+            hideLoading.classList.add("hidden");
+          }); 
         }; 
+        
 
       function displayErrorPageStyles() {
         document.body.style.background = "var(--dark-gray)";
