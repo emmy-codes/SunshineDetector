@@ -19,6 +19,7 @@ const centerText = document.getElementById("center-text");
 const sky = document.getElementsByClassName("sky");
 const clouds = document.getElementsByClassName("clouds");
 const hideLoading = document.querySelector(".loader");
+const hideLoading2 = document.querySelector(".loader-header");
 const sunsetTimer = document.querySelector("#time-sun");
 
 // API information
@@ -106,6 +107,7 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
           })
           .finally(() => {
             hideLoading.classList.add("hidden");
+            hideLoading2.classList.add("hidden");
           }); 
         }; 
         
