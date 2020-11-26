@@ -6,6 +6,10 @@
 //show sunset time
 const sunsetPrint = document.getElementById("time-sun");
 
+//show city
+let city = "";
+const cityPrint = document.getElementById("city");
+
 //date
 const date = document.getElementById("date");
 const variations = {weekday : "long", month : "long", day : "numeric", year : "numeric"}
@@ -85,12 +89,13 @@ function getAPI (x, y) {
   
   const requestURL = url.concat("?key=",apiKey,"&lat=", lat, "&lng=", long)
         
-  fetch(requestURL)
+fetch(requestURL)
   .then(response => response.json())
   .then(data => {
     sunset = data.sunset;
     sunrise = data.sunrise;
-    console.log(sunset)
+    city = data.city;
+    cityPrint.innerText = "Location: " + city;
     checkTime();
     heading.classList.remove("hidden");
     hideLoading.classList.add("hidden");
@@ -101,29 +106,24 @@ function getAPI (x, y) {
     counter.innerHTML = "Something went wrong when getting information regarding the sunset or sunrise. Please refresh the page so we can try get it for you again!" + 
     "<br/>" + "<div id=\"refresh-icon\"><i class=\"fas fa-redo\"></i></div>";
     const refreshButton = document.getElementById("refresh-icon");
-    refreshButton.addEventListener("click", () => {
-    window.location.reload();
-    });
-  });
+      refreshButton.addEventListener("click", () => {
+      window.location.reload();
+      });
+   });
 }; 
 
 function displayErrorPageStyles() {
-  document.body.style.background = "var(--dark-gray)";
-  sun.style.display = "none";
-  sunsetPrint.style.display = "none";
+ document.body.style.background = "var(--dark-gray)";
+ sun.style.display = "none";  
+ sunsetPrint.style.display = "none";
 
-  centerText.style.marginTop = "15vh";
-  centerText.style.color = "var(--light-peach)";
-  date.style.color = "var(--light-peach)";
-  time.style.color = "var(--light-peach)";
+ centerText.style.marginTop = "15vh";
+ centerText.style.color = "var(--light-peach)";
+ date.style.color = "var(--light-peach)";
+ time.style.color = "var(--light-peach)";
 
-  heading.style.fontSize = "2.5rem";
-  heading.style.fontFamily = "var(--font-numbers)";
-        
-  counter.style.fontFamily = "var(--font-text)";
-  counter.style.fontWeight = "700";
-  counter.style.fontSize = "1rem"
-  counter.style.paddingTop = "10px";
+ heading.style.fontSize = "2.5rem";
+ heading.style.fontFamily = "var(--font-numbers)";
 }
 
 function activateNightMode() {
