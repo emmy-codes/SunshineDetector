@@ -28,8 +28,8 @@ let sunsetArr;
 let sunriseArr;
 
 //Store time of Right now
-let hours = "08";
-let minutes = "09";
+let hours
+let minutes
 
 date.innerHTML = today.toLocaleDateString("en-US", variations);
 
@@ -48,7 +48,7 @@ function timeRightNow() {
       time.innerHTML = hours + ":" + minutes;
     }, 1000);
 }
-// timeRightNow();
+timeRightNow();
 
 
 const options = {
@@ -90,6 +90,7 @@ function getAPI (x, y) {
   .then(data => {
     sunset = data.sunset;
     sunrise = data.sunrise;
+    console.log(sunset)
     checkTime();
     heading.classList.remove("hidden");
     hideLoading.classList.add("hidden");
@@ -137,19 +138,34 @@ function activateNightMode() {
 function checkTime() {
   sunsetArr = sunset.split(':');
   sunriseArr = sunrise.split(':');
-  if (parseInt(hours) > parseInt(sunriseArr[0]) && parseInt(hours) < parseInt(sunsetArr[0]) || parseInt(hours) === parseInt(sunriseArr[0]) && parseInt(minutes) > parseInt(sunriseArr[1]) || parseInt(hours) === parseInt(sunsetArr[0]) && parseInt(minutes) < parseInt(sunriseArr[1])) {
-    console.log("Middle of the day")
-    calculateCountDownSunset();
-  } else if (parseInt(hours) > parseInt(sunsetArr[0]) || parseInt(hours) === parseInt(sunsetArr[0]) &&  parseInt(minutes) > parseInt(sunsetArr[1])) {
-    console.log("After sunset, before midnight")
-    activateNightMode();
-    calculateCountDownSunriseBeforeMidnight()
-  } else if (parseInt(hours) < parseInt(sunriseArr[0]) || parseInt(hours) === parseInt(sunriseArr[0]) && parseInt(minutes) < parseInt(sunsetArr[1])) { 
-    console.log("After midnight, before sunrise");
-    activateNightMode();
-    calculateCountDownSunriseAfterMidnight()
-  }
-}
+
+  if (parseInt(hours) > parseInt(sunriseArr[0]) && 
+    parseInt(hours) < parseInt(sunsetArr[0]) || 
+    parseInt(hours) === parseInt(sunriseArr[0]) && 
+    parseInt(minutes) < parseInt(sunriseArr[1]) || 
+    parseInt(hours) === parseInt(sunsetArr[0]) && 
+    parseInt(minutes) < parseInt(sunsetArr[1])) {
+
+      console.log("Middle of the day")
+      calculateCountDownSunset();
+
+  } else if (parseInt(hours) > parseInt(sunsetArr[0]) || 
+    parseInt(hours) === parseInt(sunsetArr[0]) && 
+    parseInt(minutes) > parseInt(sunsetArr[1])) {
+
+      console.log("After sunset, before midnight")
+      activateNightMode();
+      calculateCountDownSunriseBeforeMidnight()
+
+  } else if (parseInt(hours) < parseInt(sunriseArr[0]) || 
+    parseInt(hours) === parseInt(sunriseArr[0]) && 
+    parseInt(minutes) < parseInt(sunsetArr[1])) { 
+      
+      console.log("After midnight, before sunrise");
+      activateNightMode();
+      calculateCountDownSunriseAfterMidnight()
+    };
+};
 
 function calculateCountDownSunset () {
   let newDate = new Date();
