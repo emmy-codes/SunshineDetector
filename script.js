@@ -250,22 +250,21 @@ function calculateCountDownSunriseAfterMidnight() {
 
 date.addEventListener("click", displayAdvice);
 
-          function displayAdvice(){
-          let printRandomAdvice = document.getElementById("random-advice")
-          printRandomAdvice.innerText = randomAdvice;
-          }
+function displayAdvice(){
+  let printRandomAdvice = document.getElementById("random-advice")
+  printRandomAdvice.innerText = randomAdvice;
+}
 
-  const requestAdviceURL = "https://api.adviceslip.com/advice"
+const requestAdviceURL = "https://api.adviceslip.com/advice"
 
-  fetch(requestAdviceURL)
-      .then(response => response.json())
-      .then(data => {
-          randomAdvice = data.slip.advice;
-          console.log(randomAdvice);
+fetch(requestAdviceURL)
+  .then(response => response.json())
+  .then(data => {
+  randomAdvice = data.slip.advice;
+  console.log(randomAdvice);
 
-      })
-
-    //   .catch(error => {
-    //     let errorText = document.getElementById("error")
-    //     errorElt.innerText = "No advice today :(";
-    // });
+})
+  // .catch(error => {
+  //   let errorText = document.getElementById("error")
+  //   errorElt.innerText = "No advice today :(";
+  // });
