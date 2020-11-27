@@ -1,7 +1,5 @@
  //time-current
  const time = document.getElementById("time");
-//  const todayTime = new Date();
-//  time.innerHTML =  todayTime.getHours() + ":" + todayTime.getMinutes();
 
 //show sunset time
 const sunsetPrint = document.getElementById("time-sun");
@@ -14,6 +12,8 @@ const cityPrint = document.getElementById("city");
 const date = document.getElementById("date");
 const variations = {weekday : "long", month : "long", day : "numeric", year : "numeric"}
 const today = new Date();
+date.innerHTML = today.toLocaleDateString("en-US", variations);
+
 
 const header = document.getElementById("header")
 const heading = document.getElementById("info");
@@ -38,7 +38,7 @@ let sunriseArr;
 let hours
 let minutes
 
-date.innerHTML = today.toLocaleDateString("en-US", variations);
+
 
 
 
@@ -76,7 +76,6 @@ function success(position) {
 };
 
 function error () {
-  hideLoading.classList.add("hidden");
   displayErrorPageStyles();
   heading.innerText = "Tripped when looking for sunshine :(";
   counter.innerHTML = "We could not find your location! Please refresh the page and allow us to see your location." + 
@@ -105,6 +104,9 @@ fetch(requestURL)
     checkTime();
     heading.classList.remove("hidden");
     hideLoading.classList.add("hidden");
+    sunsetTimer.classList.remove("hidden");
+    hideLoading2.classList.add("hidden");
+
   })
   .catch(error => {
     displayErrorPageStyles();
@@ -130,8 +132,11 @@ function displayErrorPageStyles() {
 
  heading.style.fontSize = "2.5rem";
  heading.style.fontFamily = "var(--font-numbers)";
+ counter.style.fontSize = "1.5rem";
 
+ heading.classList.remove("hidden");
  hideLoading.classList.add("hidden");
+ sunsetTimer.classList.remove("hidden");
  hideLoading2.classList.add("hidden");
 }
 
@@ -163,15 +168,13 @@ function checkTime() {
     parseInt(minutes) > parseInt(sunsetArr[1])) {
 
       console.log("After sunset, before midnight")
-      activateNightMode();
       calculateCountDownSunriseBeforeMidnight()
 
   } else if (parseInt(hours) < parseInt(sunriseArr[0]) || 
     parseInt(hours) === parseInt(sunriseArr[0]) && 
     parseInt(minutes) < parseInt(sunsetArr[1])) { 
-      
+
       console.log("After midnight, before sunrise");
-      activateNightMode();
       calculateCountDownSunriseAfterMidnight()
     };
 };
@@ -190,6 +193,8 @@ function calculateCountDownSunset () {
 
     counter.innerText = hours + "h " + minutes + "m " + seconds + "s ";
     sunsetPrint.innerText = "Sunset: " + sunset;
+    hideLoading.classList.add("hidden");
+    hideLoading.classList.add("hidden");
 
     if (distance < 0) {
       clearInterval(x);
@@ -199,6 +204,7 @@ function calculateCountDownSunset () {
 }     
 
 function calculateCountDownSunriseBeforeMidnight() {
+  activateNightMode();
   let newDate = new Date();
   let calculateSunriseDate = newDate.setHours(parseInt(sunriseArr[0]), parseInt(sunriseArr[1]));
   let calSunTomorrow = new Date(calculateSunriseDate);
@@ -216,7 +222,7 @@ function calculateCountDownSunriseBeforeMidnight() {
     heading.innerText = "Time until sunrise";
     sunsetPrint.innerText ="Sunrise: " + sunrise
 
-    if (distance < 0) {
+    if (distance <= 0) {
       clearInterval(y);
       calculateCountDownSunriseAfterMidnight()
     }
@@ -224,6 +230,7 @@ function calculateCountDownSunriseBeforeMidnight() {
 }
 
 function calculateCountDownSunriseAfterMidnight() {
+  activateNightMode();
   let newDate = new Date();
   let calculateSunriseDate = newDate.setHours(parseInt(sunriseArr[0]), parseInt(sunriseArr[1]));
 
@@ -239,7 +246,7 @@ function calculateCountDownSunriseAfterMidnight() {
     counter.innerText = hours + "h " + minutes + "m " + seconds + "s ";
     sunsetPrint.innerText ="Sunrise: " + sunrise
 
-    if (distance < 0) {
+    if (distance <= 0) {
       clearInterval(y);
       window.location.reload();
     }
@@ -250,21 +257,28 @@ function calculateCountDownSunriseAfterMidnight() {
 
 date.addEventListener("click", displayAdvice);
 
+function getAPIAdvice() {
+  const requestAdviceURL = "https://api.adviceslip.com/advice"
+
+  fetch(requestAdviceURL)
+  .then(response => response.json())
+  .then(data => {
+  randomAdvice = data.slip.advice;
+  console.log(randomAdvice);
+  displayAdvice();
+  });
+  // .catch(error => {
+  //   let errorText = document.getElementById("error")
+  //   errorElt.innerText = "No advice today :(";
+  // });
+};
+
 function displayAdvice(){
   let printRandomAdvice = document.getElementById("random-advice")
   printRandomAdvice.innerText = randomAdvice;
 }
 
-const requestAdviceURL = "https://api.adviceslip.com/advice"
 
-fetch(requestAdviceURL)
-  .then(response => response.json())
-  .then(data => {
-  randomAdvice = data.slip.advice;
-  console.log(randomAdvice);
 
-})
-  // .catch(error => {
-  //   let errorText = document.getElementById("error")
-  //   errorElt.innerText = "No advice today :(";
-  // });
+
+
