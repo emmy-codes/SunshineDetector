@@ -116,10 +116,6 @@ fetch(requestURL)
       window.location.reload();
       });
    });
-  .finally(() => {
-      hideLoading.classList.add("hidden");
-      hideLoading2.classList.add("hidden");
-   }); 
 }; 
 
 function displayErrorPageStyles() {
@@ -134,6 +130,9 @@ function displayErrorPageStyles() {
 
  heading.style.fontSize = "2.5rem";
  heading.style.fontFamily = "var(--font-numbers)";
+
+ hideLoading.classList.add("hidden");
+ hideLoading2.classList.add("hidden");
 }
 
 function activateNightMode() {
