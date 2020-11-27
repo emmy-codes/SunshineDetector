@@ -26,7 +26,9 @@ const hideLoading = document.querySelector(".loader");
 const hideLoading2 = document.querySelector(".loader-header");
 const sunsetTimer = document.querySelector("#time-sun");
 
+
 // API information
+let randomAdvice;
 let sunset;
 let sunrise;
 let sunsetArr;
@@ -37,6 +39,8 @@ let hours
 let minutes
 
 date.innerHTML = today.toLocaleDateString("en-US", variations);
+
+
 
 function timeRightNow() {
   setInterval(function() {
@@ -231,7 +235,7 @@ function calculateCountDownSunriseAfterMidnight() {
     let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-  
+    
     heading.innerText = "Time until sunrise";
     counter.innerText = hours + "h " + minutes + "m " + seconds + "s ";
     sunsetPrint.innerText ="Sunrise: " + sunrise
@@ -242,3 +246,27 @@ function calculateCountDownSunriseAfterMidnight() {
     }
   }, 1000);
 }
+
+// Random advice EASTER EGG
+
+date.addEventListener("click", displayAdvice);
+
+          function displayAdvice(){
+          let printRandomAdvice = document.getElementById("random-advice")
+          printRandomAdvice.innerText = randomAdvice;
+          }
+
+  const requestAdviceURL = "https://api.adviceslip.com/advice"
+
+  fetch(requestAdviceURL)
+      .then(response => response.json())
+      .then(data => {
+          randomAdvice = data.slip.advice;
+          console.log(randomAdvice);
+
+      })
+
+    //   .catch(error => {
+    //     let errorText = document.getElementById("error")
+    //     errorElt.innerText = "No advice today :(";
+    // });
