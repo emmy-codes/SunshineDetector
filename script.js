@@ -6,6 +6,10 @@
 //show sunset time
 const sunsetPrint = document.getElementById("time-sun");
 
+//show city
+let city = "";
+const cityPrint = document.getElementById("city");
+
 //date
 const date = document.getElementById("date");
 const variations = {weekday : "long", month : "long", day : "numeric", year : "numeric"}
@@ -19,13 +23,20 @@ const centerText = document.getElementById("center-text");
 const sky = document.getElementsByClassName("sky");
 const clouds = document.getElementsByClassName("clouds");
 const hideLoading = document.querySelector(".loader");
-
+const hideLoading2 = document.querySelector(".loader-header");
+const sunsetTimer = document.querySelector("#time-sun");
 
 
 // API information
-let sunset = "";
-let sunrise = "";
 let randomAdvice;
+let sunset;
+let sunrise;
+let sunsetArr;
+let sunriseArr;
+
+//Store time of Right now
+let hours
+let minutes
 
 date.innerHTML = today.toLocaleDateString("en-US", variations);
 
@@ -34,8 +45,8 @@ date.innerHTML = today.toLocaleDateString("en-US", variations);
 function timeRightNow() {
   setInterval(function() {
     const todayTime = new Date();
-    let hours = todayTime.getHours();
-    let minutes = todayTime.getMinutes();
+    hours = todayTime.getHours();
+    minutes = todayTime.getMinutes();
 
       if (hours < 10) {
         hours = '0' + hours
@@ -53,148 +64,188 @@ const options = {
     enableHighAccuracy: false, 
     maximumAge: 30000, 
     timeout: 10000
-  };
+};
 
 const getLocation = navigator.geolocation.getCurrentPosition(success, error, options);
 
-    function success(position) {
-        let latitude = position.coords.latitude;
-        let longitude = position.coords.longitude;
-        console.log(longitude, latitude)
-        getAPI(latitude, longitude);
-    }
+function success(position) {
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  console.log(latitude, longitude);
+  getAPI(latitude, longitude);
+};
 
-      function error () {
-        displayErrorPageStyles();
-        heading.innerText = "Tripped when looking for sunshine :(";
-        counter.innerHTML = "We could not find your location! Please refresh the page and allow us to see your location." + 
-        "<br/>" + "<div id=\"refresh-icon\"><i class=\"fas fa-redo\"></i></div>";
+function error () {
+  hideLoading.classList.add("hidden");
+  displayErrorPageStyles();
+  heading.innerText = "Tripped when looking for sunshine :(";
+  counter.innerHTML = "We could not find your location! Please refresh the page and allow us to see your location." + 
+  "<br/>" + "<div id=\"refresh-icon\"><i class=\"fas fa-redo\"></i></div>";
+  const refreshButton = document.getElementById("refresh-icon");
+  refreshButton.addEventListener("click", () => {
+  window.location.reload();
+  });
+};
 
-        const refreshButton = document.getElementById("refresh-icon");
-        refreshButton.addEventListener("click", () => {
-          window.location.reload();
-        });
-      };
-
-      function getAPI (x, y) {
-        const lat = x
-        const long = y
-        const url = "https://cors-anywhere.herokuapp.com/https://api.geodatasource.com/city"
-        const apiKey = "JNHBEJJ3GUSDENNYOYFUIOOO7KM5PCZP"
+function getAPI (x, y) {
+  const lat = x
+  const long = y
+  const url = "https://cors-anywhere.herokuapp.com/https://api.geodatasource.com/city"
+  const apiKey = "JNHBEJJ3GUSDENNYOYFUIOOO7KM5PCZP"
   
-        const requestURL = url.concat("?key=",apiKey,"&lat=", lat, "&lng=", long)
+  const requestURL = url.concat("?key=",apiKey,"&lat=", lat, "&lng=", long)
         
-        fetch(requestURL)
-          .then(response => response.json())
-          // .then(data => console.log(data))
-          .then(data => {
-          sunset = data.sunset;
-          sunrise = data.sunrise;
-          // console.log(sunset);
-          sunsetPrint.innerText = "Sunset: " + sunset;
-          console.log(sunset)
-          calculateCountDown();
-          heading.classList.remove("hidden");
-          hideLoading.classList.add("hidden");
-          })
-          .catch(error => {
-            displayErrorPageStyles();
-            heading.innerText = "Tripped when looking for sunshine :(";
-            counter.innerHTML = "Something went wrong when getting information regarding the sunset or sunrise. Please refresh the page so we can try get it for you again!" + 
-            "<br/>" + "<div id=\"refresh-icon\"><i class=\"fas fa-redo\"></i></div>";
-            const refreshButton = document.getElementById("refresh-icon");
-              refreshButton.addEventListener("click", () => {
-                window.location.reload();
-              });
-          });
-        }; 
+fetch(requestURL)
+  .then(response => response.json())
+  .then(data => {
+    sunset = data.sunset;
+    sunrise = data.sunrise;
+    city = data.city;
+    cityPrint.innerText = "Location: " + city;
+    checkTime();
+    heading.classList.remove("hidden");
+    hideLoading.classList.add("hidden");
+  })
+  .catch(error => {
+    displayErrorPageStyles();
+    heading.innerText = "Tripped when looking for sunshine :(";
+    counter.innerHTML = "Something went wrong when getting information regarding the sunset or sunrise. Please refresh the page so we can try get it for you again!" + 
+    "<br/>" + "<div id=\"refresh-icon\"><i class=\"fas fa-redo\"></i></div>";
+    const refreshButton = document.getElementById("refresh-icon");
+      refreshButton.addEventListener("click", () => {
+      window.location.reload();
+      });
+   });
+  .finally(() => {
+      hideLoading.classList.add("hidden");
+      hideLoading2.classList.add("hidden");
+   }); 
+}; 
 
-      function displayErrorPageStyles() {
-        document.body.style.background = "var(--dark-gray)";
+function displayErrorPageStyles() {
+ document.body.style.background = "var(--dark-gray)";
+ sun.style.display = "none";  
+ sunsetPrint.style.display = "none";
 
-        sun.style.display = "none";
-        
-        sunsetPrint.style.display = "none";
+ centerText.style.marginTop = "15vh";
+ centerText.style.color = "var(--light-peach)";
+ date.style.color = "var(--light-peach)";
+ time.style.color = "var(--light-peach)";
 
-        date.style.color = "var(--light-peach)";
-        centerText.style.marginTop = "15vh";
-        centerText.style.color = "var(--light-peach)";
-        time.style.color = "var(--light-peach)";
+ heading.style.fontSize = "2.5rem";
+ heading.style.fontFamily = "var(--font-numbers)";
+}
 
-        heading.style.fontSize = "2.5rem";
-        heading.style.fontFamily = "var(--font-numbers)";
-        
+function activateNightMode() {
+  document.body.style.background = "black";
+  centerText.style.color = "var(--light-peach)";
+  header.style.color = "var(--light-peach)";
+  sun.classList.add('moon');
+  sky[0].classList.add('nightsky');
+  clouds[0].classList.add('twinkles');
+}
 
-        counter.style.fontFamily = "var(--font-text)";
-        counter.style.fontWeight = "700";
-        counter.style.fontSize = "1rem"
-        counter.style.paddingTop = "10px";
-      }
+function checkTime() {
+  sunsetArr = sunset.split(':');
+  sunriseArr = sunrise.split(':');
 
-      function activateNightMode() {
-        document.body.style.background = "black";
-        centerText.style.color = "var(--light-peach)";
-        header.style.color = "var(--light-peach)";
-        sun.classList.add('moon');
-        sky[0].classList.add('nightsky');
-        clouds[0].classList.add('twinkles');
-      }
+  if (parseInt(hours) > parseInt(sunriseArr[0]) && 
+    parseInt(hours) < parseInt(sunsetArr[0]) || 
+    parseInt(hours) === parseInt(sunriseArr[0]) && 
+    parseInt(minutes) < parseInt(sunriseArr[1]) || 
+    parseInt(hours) === parseInt(sunsetArr[0]) && 
+    parseInt(minutes) < parseInt(sunsetArr[1])) {
 
+      console.log("Middle of the day")
+      calculateCountDownSunset();
 
-  function calculateCountDown () {
-    let sunArr = sunset.split(':');
-    let calculateSunsetDate = new Date();
-    let calsun = calculateSunsetDate.setHours(parseInt(sunArr[0]), parseInt(sunArr[1]));
+  } else if (parseInt(hours) > parseInt(sunsetArr[0]) || 
+    parseInt(hours) === parseInt(sunsetArr[0]) && 
+    parseInt(minutes) > parseInt(sunsetArr[1])) {
 
-   let countDownDate = calculateSunsetDate.getTime();
+      console.log("After sunset, before midnight")
+      activateNightMode();
+      calculateCountDownSunriseBeforeMidnight()
 
-   let x = setInterval(function() {
+  } else if (parseInt(hours) < parseInt(sunriseArr[0]) || 
+    parseInt(hours) === parseInt(sunriseArr[0]) && 
+    parseInt(minutes) < parseInt(sunsetArr[1])) { 
+      
+      console.log("After midnight, before sunrise");
+      activateNightMode();
+      calculateCountDownSunriseAfterMidnight()
+    };
+};
+
+function calculateCountDownSunset () {
+  let newDate = new Date();
+  let calculateSunsetDate = newDate.setHours(parseInt(sunsetArr[0]), parseInt(sunsetArr[1]));
+
+  let x = setInterval(function() {
     let today = new Date().getTime();
-
-    let distance = calsun - today;
+    let distance = calculateSunsetDate - today;
 
     let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
     counter.innerText = hours + "h " + minutes + "m " + seconds + "s ";
+    sunsetPrint.innerText = "Sunset: " + sunset;
 
     if (distance < 0) {
-      calculateCountDownSunrise();
       clearInterval(x);
-      }
-    }, 1000);
-  }
-      
+      calculateCountDownSunriseBeforeMidnight();
+    }
+  }, 1000);
+}     
 
-  function calculateCountDownSunrise() {
+function calculateCountDownSunriseBeforeMidnight() {
+  let newDate = new Date();
+  let calculateSunriseDate = newDate.setHours(parseInt(sunriseArr[0]), parseInt(sunriseArr[1]));
+  let calSunTomorrow = new Date(calculateSunriseDate);
+      calSunTomorrow.setDate(calSunTomorrow.getDate() + 1);
+
+  let y = setInterval(function() {
+    let today = new Date().getTime();
+    let distance = calSunTomorrow - today;
+
+    let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  
+    counter.innerText = hours + "h " + minutes + "m " + seconds + "s ";
     heading.innerText = "Time until sunrise";
     sunsetPrint.innerText ="Sunrise: " + sunrise
-    activateNightMode();
 
-    let sunArr = sunrise.split(':');
-    let calculateSunriseDate = new Date();
-    let calsun = calculateSunriseDate.setHours(parseInt(sunArr[0]), parseInt(sunArr[1]));
-    let calsun2 = new Date(calsun);
-    calsun2.setDate(calsun2.getDate() + 1);
+    if (distance < 0) {
+      clearInterval(y);
+      calculateCountDownSunriseAfterMidnight()
+    }
+  }, 1000);
+}
 
-    let y = setInterval(function() {
-      let today = new Date().getTime();
-  
-      let distance = calsun2 - today;
-  
-      let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-  
-      counter.innerText = hours + "h " + minutes + "m " + seconds + "s ";
+function calculateCountDownSunriseAfterMidnight() {
+  let newDate = new Date();
+  let calculateSunriseDate = newDate.setHours(parseInt(sunriseArr[0]), parseInt(sunriseArr[1]));
 
-        if (distance < 0) {
-          clearInterval(y);
-          window.location.reload();
-          }
-      }, 1000);
-  }
+  let y = setInterval(function() {
+    let today = new Date().getTime();
+    let distance = calculateSunriseDate - today;
+
+    let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    heading.innerText = "Time until sunrise";
+    counter.innerText = hours + "h " + minutes + "m " + seconds + "s ";
+    sunsetPrint.innerText ="Sunrise: " + sunrise
+
+    if (distance < 0) {
+      clearInterval(y);
+      window.location.reload();
+    }
+  }, 1000);
+}
 
 // Random advice EASTER EGG
 
@@ -219,5 +270,3 @@ date.addEventListener("click", displayAdvice);
     //     let errorText = document.getElementById("error")
     //     errorElt.innerText = "No advice today :(";
     // });
-
-    
