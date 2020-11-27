@@ -21,11 +21,15 @@ const clouds = document.getElementsByClassName("clouds");
 const hideLoading = document.querySelector(".loader");
 
 
+
 // API information
 let sunset = "";
 let sunrise = "";
+let randomAdvice;
 
 date.innerHTML = today.toLocaleDateString("en-US", variations);
+
+
 
 function timeRightNow() {
   setInterval(function() {
@@ -76,7 +80,7 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
         const lat = x
         const long = y
         const url = "https://cors-anywhere.herokuapp.com/https://api.geodatasource.com/city"
-        const apiKey = "S5RRHG5VS6G7CPBGRXUYUAVFS44W6ZXO"
+        const apiKey = "JNHBEJJ3GUSDENNYOYFUIOOO7KM5PCZP"
   
         const requestURL = url.concat("?key=",apiKey,"&lat=", lat, "&lng=", long)
         
@@ -191,3 +195,29 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
           }
       }, 1000);
   }
+
+// Random advice EASTER EGG
+
+date.addEventListener("click", displayAdvice);
+
+          function displayAdvice(){
+          let printRandomAdvice = document.getElementById("random-advice")
+          printRandomAdvice.innerText = randomAdvice;
+          }
+
+  const requestAdviceURL = "https://api.adviceslip.com/advice"
+
+  fetch(requestAdviceURL)
+      .then(response => response.json())
+      .then(data => {
+          randomAdvice = data.slip.advice;
+          console.log(randomAdvice);
+
+      })
+
+    //   .catch(error => {
+    //     let errorText = document.getElementById("error")
+    //     errorElt.innerText = "No advice today :(";
+    // });
+
+    

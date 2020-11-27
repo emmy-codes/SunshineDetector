@@ -167,6 +167,18 @@ header {
 }
 
 /*------------------- Mountains --------------------*/
+#random-advice {
+  font-family: var(--font-text);
+  color: var(--light-peach);
+  background-color: var(--dark-teal);
+  margin: auto 0;
+  /* width: 30%; */
+  text-align: center;
+  box-sizing: border-box;
+}
+
+
+/*------------------- Mountains --------------------*/
 .mountain1 {
   position: absolute;
   content: " ";
