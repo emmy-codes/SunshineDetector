@@ -100,10 +100,81 @@ header {
   z-index: -10;
 }
 
+
+.cloud {
+  margin: 20px;
+  width: 200px; height: 60px;
+	background: #fff;
+	
+	border-radius: 200px;
+	-moz-border-radius: 200px;
+	-webkit-border-radius: 200px;
+	
+	position: relative; 
+}
+
+.cloud:before {
+	content: '';
+	position: absolute; 
+	background: #fff;
+  width: 80px; 
+  height: 80px;
+  position: absolute; 
+  top: -30px; 
+  left: 20px;
+	border-radius: 100px;
+	-moz-border-radius: 100px;
+	-webkit-border-radius: 100px;
+}
+
+.cloud:after {
+  position: absolute;
+  content: '';
+  width: 100px; 
+  height: 100px;
+  top: -55px; 
+  left: auto; 
+  right: 10px;
+  background-color: #fff;
+  border-radius: 100px;
+	-moz-border-radius: 100px;
+	-webkit-border-radius: 100px;
+}
+
+.cloudmovement1 {
+  -webkit-transform: scale(0.7);
+	-moz-transform: scale(0.7);
+  transform: scale(0.7);
+  -webkit-animation: moveclouds 40s linear infinite;
+	-moz-animation: moveclouds 40s linear infinite;
+	-o-animation: moveclouds 40s linear infinite;
+}
+
+.cloudmovement2 {
+  -webkit-transform: scale(0.6);
+	-moz-transform: scale(0.6);
+  transform: scale(0.6);
+  -webkit-animation: moveclouds 60s linear reverse infinite;
+	-moz-animation: moveclouds 60s linear reverse infinite;
+  -o-animation: moveclouds 60s linear reverse infinite;
+}
+
+@-webkit-keyframes moveclouds {
+	0% {margin-left: -1000px;}
+	100% {margin-left: 1000px;}
+}
+@-moz-keyframes moveclouds {
+	0% {margin-left: -1000px;}
+	100% {margin-left: 1000px;}
+}
+@-o-keyframes moveclouds {
+	0% {margin-left: -1000px;}
+	100% {margin-left: 1000px;}
+}
+
 #center-text {
   margin: 0 auto;
   text-align: center;
-  margin-top: 25vh;
   color: var(--dark-gray);
   width: 95vw;
 }
@@ -186,7 +257,6 @@ header {
   padding-top: 15px;
 }
 
-/*------------------- Mountains --------------------*/
 #random-advice {
   font-family: var(--font-text);
   color: var(--light-peach);
@@ -680,7 +750,6 @@ header {
   }
 }
 
-/* Emmas confused ramblings */
 
 .hidden {
   display: none;
@@ -688,7 +757,7 @@ header {
 
 .loader {
   width: 150px;
-  margin: 150px auto 70px;
+  margin: auto;
   position: relative;
 }
 
