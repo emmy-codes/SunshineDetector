@@ -272,9 +272,31 @@ function getAPIAdvice() {
 };
 
 function displayAdvice(){
+  getAPIAdvice();
   let printRandomAdvice = document.getElementById("random-advice")
+  let randomAdviceModal = document.getElementById("random-advice-modal");
+  let close = document.getElementsByClassName("close")[0];
+
+// Open the modal
+date.onclick = function() {
+  randomAdviceModal.style.display = "block";
   printRandomAdvice.innerText = randomAdvice;
 }
+
+// close the modal
+close.onclick = function() {
+  randomAdviceModal.style.display = "none";
+}
+
+// clicks outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == randomAdviceModal) {
+    randomAdviceModal.style.display = "none";
+  }
+}
+}
+
+
 
 
 
