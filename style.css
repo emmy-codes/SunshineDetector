@@ -52,7 +52,7 @@ header {
   z-index: -10;
 }
 
-.sun {
+.sun:not(.moon) {
   border-radius: 50%;
   background: var(--dark-peach);
   height: var(--sun-size);
@@ -105,7 +105,7 @@ header {
   text-align: center;
   margin-top: 25vh;
   color: var(--dark-gray);
-  width: 70vw;
+  width: 95vw;
 }
 
 #info {
