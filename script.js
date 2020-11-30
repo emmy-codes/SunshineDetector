@@ -156,24 +156,21 @@ function checkTime() {
   if (parseInt(hours) > parseInt(sunriseArr[0]) && 
     parseInt(hours) < parseInt(sunsetArr[0]) || 
     parseInt(hours) === parseInt(sunriseArr[0]) && 
-    parseInt(minutes) < parseInt(sunriseArr[1]) || 
+    parseInt(minutes) > parseInt(sunriseArr[1]) || 
     parseInt(hours) === parseInt(sunsetArr[0]) && 
     parseInt(minutes) < parseInt(sunsetArr[1])) {
-
       console.log("Middle of the day")
       calculateCountDownSunset();
 
   } else if (parseInt(hours) > parseInt(sunsetArr[0]) || 
     parseInt(hours) === parseInt(sunsetArr[0]) && 
     parseInt(minutes) > parseInt(sunsetArr[1])) {
-
       console.log("After sunset, before midnight")
       calculateCountDownSunriseBeforeMidnight()
 
   } else if (parseInt(hours) < parseInt(sunriseArr[0]) || 
     parseInt(hours) === parseInt(sunriseArr[0]) && 
     parseInt(minutes) < parseInt(sunsetArr[1])) { 
-
       console.log("After midnight, before sunrise");
       calculateCountDownSunriseAfterMidnight()
     };
@@ -191,8 +188,9 @@ function calculateCountDownSunset () {
     let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+    heading.innerText = "Time until sunset";
     counter.innerText = hours + "h " + minutes + "m " + seconds + "s ";
-    sunsetPrint.innerText = "Sunset: " + sunset;
+    sunsetPrint.innerText = "Time of Sunset: " + sunset;
     hideLoading.classList.add("hidden");
     hideLoading.classList.add("hidden");
 
@@ -204,7 +202,6 @@ function calculateCountDownSunset () {
 }     
 
 function calculateCountDownSunriseBeforeMidnight() {
-  activateNightMode();
   let newDate = new Date();
   let calculateSunriseDate = newDate.setHours(parseInt(sunriseArr[0]), parseInt(sunriseArr[1]));
   let calSunTomorrow = new Date(calculateSunriseDate);
@@ -218,9 +215,10 @@ function calculateCountDownSunriseBeforeMidnight() {
     let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
   
+    activateNightMode();
     counter.innerText = hours + "h " + minutes + "m " + seconds + "s ";
     heading.innerText = "Time until sunrise";
-    sunsetPrint.innerText ="Sunrise: " + sunrise
+    sunsetPrint.innerText ="Time of Sunrise: " + sunrise
 
     if (distance <= 0) {
       clearInterval(y);
@@ -230,7 +228,6 @@ function calculateCountDownSunriseBeforeMidnight() {
 }
 
 function calculateCountDownSunriseAfterMidnight() {
-  activateNightMode();
   let newDate = new Date();
   let calculateSunriseDate = newDate.setHours(parseInt(sunriseArr[0]), parseInt(sunriseArr[1]));
 
@@ -242,9 +239,10 @@ function calculateCountDownSunriseAfterMidnight() {
     let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
     
+    activateNightMode();
     heading.innerText = "Time until sunrise";
     counter.innerText = hours + "h " + minutes + "m " + seconds + "s ";
-    sunsetPrint.innerText ="Sunrise: " + sunrise
+    sunsetPrint.innerText ="Time of Sunrise: " + sunrise
 
     if (distance <= 0) {
       clearInterval(y);
