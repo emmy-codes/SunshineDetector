@@ -194,7 +194,7 @@ function calculateCountDownSunset () {
     hideLoading.classList.add("hidden");
     hideLoading.classList.add("hidden");
 
-    if (distance < 0) {
+    if (distance <= 0) {
       clearInterval(x);
       calculateCountDownSunriseBeforeMidnight();
     }
