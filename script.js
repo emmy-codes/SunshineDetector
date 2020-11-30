@@ -21,10 +21,11 @@ const counter = document.getElementById("countdown");
 const sun = document.getElementById("sun");
 const centerText = document.getElementById("center-text");
 const sky = document.getElementsByClassName("sky");
-const clouds = document.getElementsByClassName("clouds");
+const twinkles = document.getElementsByClassName("stars");
 const hideLoading = document.querySelector(".loader");
 const hideLoading2 = document.querySelector(".loader-header");
 const sunsetTimer = document.querySelector("#time-sun");
+const clouds = document.getElementById("clouds");
 
 
 // API information
@@ -37,9 +38,6 @@ let sunriseArr;
 //Store time of Right now
 let hours
 let minutes
-
-
-
 
 
 function timeRightNow() {
@@ -124,6 +122,7 @@ function displayErrorPageStyles() {
  document.body.style.background = "var(--dark-gray)";
  sun.style.display = "none";  
  sunsetPrint.style.display = "none";
+ clouds.style.display = "none";
 
  centerText.style.marginTop = "15vh";
  centerText.style.color = "var(--light-peach)";
@@ -141,12 +140,14 @@ function displayErrorPageStyles() {
 }
 
 function activateNightMode() {
+  centerText.style.marginTop = "25vh";
   document.body.style.background = "black";
   centerText.style.color = "var(--light-peach)";
   header.style.color = "var(--light-peach)";
   sun.classList.add('moon');
   sky[0].classList.add('nightsky');
-  clouds[0].classList.add('twinkles');
+  twinkles[0].classList.add('twinkles');
+  clouds.style.display = "none";
 }
 
 function checkTime() {
