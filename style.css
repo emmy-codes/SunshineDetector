@@ -106,16 +106,14 @@ header {
 }
 
 .cloud {
-  margin: 20px;
+  position: relative;
   width: 200px;
   height: 60px;
   background: #fff;
-
   border-radius: 200px;
   -moz-border-radius: 200px;
   -webkit-border-radius: 200px;
-
-  position: relative;
+  z-index: 10;
 }
 
 .cloud:before {
@@ -130,6 +128,7 @@ header {
   border-radius: 100px;
   -moz-border-radius: 100px;
   -webkit-border-radius: 100px;
+  z-index: 10;
 }
 
 .cloud:after {
@@ -144,6 +143,11 @@ header {
   border-radius: 100px;
   -moz-border-radius: 100px;
   -webkit-border-radius: 100px;
+  z-index: 10;
+}
+
+.cloudmargin {
+  margin-top: 35px;
 }
 
 .cloudmovement1 {
@@ -166,26 +170,26 @@ header {
 
 @-webkit-keyframes moveclouds {
   0% {
-    margin-left: -1000px;
+    margin-left: -2000px;
   }
   100% {
-    margin-left: 1000px;
+    margin-left: 2000px;
   }
 }
 @-moz-keyframes moveclouds {
   0% {
-    margin-left: -1000px;
+    margin-left: -2000px;
   }
   100% {
-    margin-left: 1000px;
+    margin-left: 2000px;
   }
 }
 @-o-keyframes moveclouds {
   0% {
-    margin-left: -1000px;
+    margin-left: -2000px;
   }
   100% {
-    margin-left: 1000px;
+    margin-left: 2000px;
   }
 }
 
@@ -195,18 +199,21 @@ header {
   text-align: center;
   color: var(--dark-gray);
   width: 95vw;
-  z-index: 1;
 }
 
 #info {
+  position: relative;
   font-family: var(--font-text);
   font-weight: 700;
   font-size: 1.5rem;
+  z-index: 10;
 }
 
 #countdown {
+  position: relative;
   font-size: 4rem;
   font-family: var(--font-numbers);
+  z-index: 10;
 }
 
 /*------------------Night sky-----------------*/
