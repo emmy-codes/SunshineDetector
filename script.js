@@ -147,6 +147,28 @@ function activateNightMode() {
   clouds.style.display = "none";
 }
 
+// activateTwilightMode()
+
+function activateTwilightMode() {
+  centerText.style.marginTop = "25vh";
+  document.body.style.background = "#363638";
+  centerText.style.color = "var(--light-peach)";
+  header.style.color = "var(--light-peach)";
+  mountain1.classList.add('twilight1');
+  mountain4.classList.add('twilight1');
+  mountain7.classList.add('twilight1');
+  mountain10.classList.add('twilight1');
+  mountain2.classList.add('twilight2');
+  mountain5.classList.add('twilight2');
+  mountain8.classList.add('twilight2');
+  mountain3.classList.add('twilight3');
+  mountain6.classList.add('twilight3');
+  mountain9.classList.add('twilight3');
+  clouds.style.color = "var(--linen)";
+}
+
+
+
 function checkTime() {
   sunsetArr = sunset.split(':');
   sunriseArr = sunrise.split(':');
@@ -190,7 +212,11 @@ function calculateCountDownSunset () {
 
     counter.innerText = hours + "h " + minutes + "m " + seconds + "s ";
 
-    if (distance <= 0) {
+    if (minutes <= 30) {
+      activateTwilightMode();
+    }
+
+    else if (distance <= 0) {
       clearInterval(x);
       calculateCountDownSunriseBeforeMidnight();
     }
