@@ -8,6 +8,9 @@
   --linen: #f3e9dd;
   --dark-peach: #f67e70;
   --light-peach: #f9b2aa;
+  --special-dark-peach: #FF7363;
+  --special-light-peach: #FA988C;
+  --special-middle-peach: #FF8E81;
   --dark-gray: #363638;
   --light-teal: #267b7e;
   --dark-teal: #1a535c;
@@ -560,6 +563,30 @@ header {
   transform-origin: top right;
   transform: skewX(20deg);
 }
+
+.twilight1 {
+  border-bottom: 420px solid var(--light-peach);
+}
+
+.twilight1::after {
+  border-bottom: 420px solid var(--dark-peach);
+} 
+.twilight2 {
+  border-bottom: 470px solid var(--special-middle-peach);
+}
+
+.twilight2::after {
+  border-bottom: 470px solid var(--special-dark-peach);
+} 
+
+.twilight3 {
+  border-bottom: 370px solid var(--special-light-peach);
+}
+
+.twilight3::after {
+  border-bottom: 370px solid var(--special-dark-peach);
+}  
+
 
 @media only screen and (max-height: 670px) {
   .mountain1 {
