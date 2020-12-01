@@ -179,8 +179,6 @@ function calculateCountDownSunset () {
   let calculateSunsetDate = newDate.setHours(parseInt(sunsetArr[0]), parseInt(sunsetArr[1]));
   heading.innerText = "Time until sunset";
   sunsetPrint.innerText = "Time of Sunset: " + sunset;
-  hideLoading.classList.add("hidden");
-  hideLoading.classList.add("hidden");
 
   let x = setInterval(function() {
     let today = new Date().getTime();
