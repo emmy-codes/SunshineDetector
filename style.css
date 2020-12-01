@@ -843,11 +843,12 @@ header {
   animation: load 2s linear infinite;
 }
 
-.loading_2 {
+.loading_text {
   position: absolute;
+  margin-top: 10px;
   width: 100%;
   top: 10px;
-  color: var(--dark-teal);
+  color: black;
   font-size: 22px;
   font-weight: 700;
   font-family: var(--font-text);
