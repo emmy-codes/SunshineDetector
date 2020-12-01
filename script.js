@@ -23,7 +23,6 @@ const centerText = document.getElementById("center-text");
 const sky = document.getElementsByClassName("sky");
 const twinkles = document.getElementsByClassName("stars");
 const hideLoading = document.querySelector(".loader");
-const hideLoading2 = document.querySelector(".loader-header");
 const sunsetTimer = document.querySelector("#time-sun");
 const clouds = document.getElementById("clouds");
 
@@ -103,7 +102,6 @@ fetch(requestURL)
     heading.classList.remove("hidden");
     hideLoading.classList.add("hidden");
     sunsetTimer.classList.remove("hidden");
-    hideLoading2.classList.add("hidden");
 
   })
   .catch(error => {
@@ -136,7 +134,6 @@ function displayErrorPageStyles() {
  heading.classList.remove("hidden");
  hideLoading.classList.add("hidden");
  sunsetTimer.classList.remove("hidden");
- hideLoading2.classList.add("hidden");
 }
 
 function activateNightMode() {

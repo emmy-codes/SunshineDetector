@@ -190,10 +190,12 @@ header {
 }
 
 #center-text {
+  position: relative;
   margin: 0 auto;
   text-align: center;
   color: var(--dark-gray);
   width: 95vw;
+  z-index: 1;
 }
 
 #info {
@@ -278,9 +280,9 @@ header {
 /* #random-advice {
   margin: auto 0;
   /* width: 30%; */
-  /* text-align: center;
+/* text-align: center;
   box-sizing: border-box;
-} */ 
+} */
 
 .random-advice-modal-class {
   display: none; /* Hidden by default */
@@ -295,16 +297,15 @@ header {
   color: var(--light-peach);
   text-align: center;
   border-radius: 20%;
-  
 }
 
 .modal-content {
   background-color: var(--dark-teal);
-  margin: 10% auto; 
+  margin: 10% auto;
   padding: 20px;
   border: none;
   border-radius: 5px;
-  width: 40%; 
+  width: 40%;
 }
 
 .close {
