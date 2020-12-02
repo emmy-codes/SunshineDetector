@@ -287,73 +287,77 @@ header {
 }
 
 /*------------------- Random advice modals--------------------*/
-/* #random-advice {
-  margin: auto 0;
-  /* width: 30%; */
-/* text-align: center;
-  box-sizing: border-box;
-} */
+
 
 .random-advice-modal-class {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 100; /* Sit on top */
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   font-family: var(--font-text);
   color: var(--light-peach);
-  text-align: center;
-  border-radius: 20%;
+  /* text-align: center;
+  align-items: center; */
+  /* border-radius: 20%; */
 }
 
-.modal-content:before {
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.modal-cloud:before {
   content: "";
   position: absolute;
   background: #fff;
-  width: 12rem;
-  height: 12rem;
-  top: -5.5rem;
-  left: 4rem;
+  width: 160px;
+  height: 160px;
+  top: -60px;
+  left: 40px;
   border-radius: 100px;
   -moz-border-radius: 100px;
   -webkit-border-radius: 100px;
   z-index: -2;
 }
 
-.modal-content:after {
+.modal-cloud:after {
   position: absolute;
   content: "";
-  width: 15rem;
-  height: 15rem;
-  top: -8rem;
+  width: 200px;
+  height: 200px;
+  top: -100px;
   left: auto;
-  right: 2rem;
+  right: 20px;
   background-color: #fff;
   border-radius: 50%;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   z-index: -2;
 }
-.modal-content{
+.modal-cloud{
   background-color: white;
+  top: 10%;
+  left: 40%;
   margin: 10% auto; 
-  padding: 1rem;
   border: none;
   border-radius: 5px;
-  width: 32rem;
-  height: 7.5rem;
+  width: 400px;
+  height: 120px;
   background: #fff;
   border-radius: 200px;
   -moz-border-radius: 200px;
   -webkit-border-radius: 200px;
-  position: relative;
-  bottom: 3rem;
+  position: absolute;
+  /* bottom: 3rem; */
 }
 
-.random-advice {
- z-index: 10;
-}
+/* #random-advice {
+ z-index: 100;
+} */
 
 
 .close {
@@ -361,6 +365,7 @@ header {
   float: right;
   font-size: 28px;
   font-weight: bold;
+  padding: 10px;
 }
 
 .close:hover,
