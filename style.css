@@ -8,6 +8,9 @@
   --linen: #f3e9dd;
   --dark-peach: #f67e70;
   --light-peach: #f9b2aa;
+  --special-dark-peach: #FF7363;
+  --special-light-peach: #FA988C;
+  --special-middle-peach: #FF8E81;
   --dark-gray: #363638;
   --light-teal: #267b7e;
   --dark-teal: #1a535c;
@@ -74,6 +77,7 @@ header {
     box-shadow: 0 0 0 0 rgba(255, 82, 82, 0);
   }
 }
+
 .moon {
   display: block;
   content: "";
@@ -105,16 +109,14 @@ header {
 }
 
 .cloud {
-  margin: 20px;
+  position: relative;
   width: 200px;
   height: 60px;
   background: #fff;
-
   border-radius: 200px;
   -moz-border-radius: 200px;
   -webkit-border-radius: 200px;
-
-  position: relative;
+  z-index: 10;
 }
 
 .cloud:before {
@@ -129,6 +131,7 @@ header {
   border-radius: 100px;
   -moz-border-radius: 100px;
   -webkit-border-radius: 100px;
+  z-index: 10;
 }
 
 .cloud:after {
@@ -143,6 +146,11 @@ header {
   border-radius: 100px;
   -moz-border-radius: 100px;
   -webkit-border-radius: 100px;
+  z-index: 10;
+}
+
+.cloudmargin {
+  margin-top: 35px;
 }
 
 .cloudmovement1 {
@@ -165,30 +173,31 @@ header {
 
 @-webkit-keyframes moveclouds {
   0% {
-    margin-left: -1000px;
+    margin-left: -2000px;
   }
   100% {
-    margin-left: 1000px;
+    margin-left: 2000px;
   }
 }
 @-moz-keyframes moveclouds {
   0% {
-    margin-left: -1000px;
+    margin-left: -2000px;
   }
   100% {
-    margin-left: 1000px;
+    margin-left: 2000px;
   }
 }
 @-o-keyframes moveclouds {
   0% {
-    margin-left: -1000px;
+    margin-left: -2000px;
   }
   100% {
-    margin-left: 1000px;
+    margin-left: 2000px;
   }
 }
 
 #center-text {
+  position: relative;
   margin: 0 auto;
   text-align: center;
   color: var(--dark-gray);
@@ -196,14 +205,18 @@ header {
 }
 
 #info {
+  position: relative;
   font-family: var(--font-text);
   font-weight: 700;
   font-size: 1.5rem;
+  z-index: 10;
 }
 
 #countdown {
+  position: relative;
   font-size: 4rem;
   font-family: var(--font-numbers);
+  z-index: 10;
 }
 
 /*------------------Night sky-----------------*/
@@ -277,9 +290,9 @@ header {
 /* #random-advice {
   margin: auto 0;
   /* width: 30%; */
-  /* text-align: center;
+/* text-align: center;
   box-sizing: border-box;
-} */ 
+} */
 
 .random-advice-modal-class {
   display: none; /* Hidden by default */
@@ -293,6 +306,7 @@ header {
   text-align: center;
   border-radius: 20%;
 }
+
 .modal-content:before {
   content: "";
   position: absolute;
@@ -336,6 +350,7 @@ header {
   position: relative;
   bottom: 3rem;
 }
+
 .random-advice {
  z-index: 10;
 }
@@ -596,6 +611,30 @@ header {
   transform: skewX(20deg);
 }
 
+.twilight1 {
+  border-bottom: 420px solid var(--light-peach);
+}
+
+.twilight1::after {
+  border-bottom: 420px solid var(--dark-peach);
+} 
+.twilight2 {
+  border-bottom: 470px solid var(--special-middle-peach);
+}
+
+.twilight2::after {
+  border-bottom: 470px solid var(--special-dark-peach);
+} 
+
+.twilight3 {
+  border-bottom: 370px solid var(--special-light-peach);
+}
+
+.twilight3::after {
+  border-bottom: 370px solid var(--special-dark-peach);
+}  
+
+
 @media only screen and (max-height: 670px) {
   .mountain1 {
     position: absolute;
@@ -848,10 +887,6 @@ header {
   position: relative;
 }
 
-.loader-header {
-  width: 100px;
-  position: relative;
-}
 
 .loading_1 {
   position: relative;
@@ -873,11 +908,12 @@ header {
   animation: load 2s linear infinite;
 }
 
-.loading_2 {
+.loading_text {
   position: absolute;
+  margin-top: 10px;
   width: 100%;
   top: 10px;
-  color: var(--dark-teal);
+  color: black;
   font-size: 22px;
   font-weight: 700;
   font-family: var(--font-text);

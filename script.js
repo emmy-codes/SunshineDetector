@@ -23,7 +23,6 @@ const centerText = document.getElementById("center-text");
 const sky = document.getElementsByClassName("sky");
 const twinkles = document.getElementsByClassName("stars");
 const hideLoading = document.querySelector(".loader");
-const hideLoading2 = document.querySelector(".loader-header");
 const sunsetTimer = document.querySelector("#time-sun");
 const clouds = document.getElementById("clouds");
 
@@ -103,7 +102,6 @@ fetch(requestURL)
     heading.classList.remove("hidden");
     hideLoading.classList.add("hidden");
     sunsetTimer.classList.remove("hidden");
-    hideLoading2.classList.add("hidden");
 
   })
   .catch(error => {
@@ -136,7 +134,6 @@ function displayErrorPageStyles() {
  heading.classList.remove("hidden");
  hideLoading.classList.add("hidden");
  sunsetTimer.classList.remove("hidden");
- hideLoading2.classList.add("hidden");
 }
 
 function activateNightMode() {
@@ -149,6 +146,28 @@ function activateNightMode() {
   twinkles[0].classList.add('twinkles');
   clouds.style.display = "none";
 }
+
+// activateTwilightMode()
+
+function activateTwilightMode() {
+  centerText.style.marginTop = "25vh";
+  document.body.style.background = "#363638";
+  centerText.style.color = "var(--light-peach)";
+  header.style.color = "var(--light-peach)";
+  mountain1.classList.add('twilight1');
+  mountain4.classList.add('twilight1');
+  mountain7.classList.add('twilight1');
+  mountain10.classList.add('twilight1');
+  mountain2.classList.add('twilight2');
+  mountain5.classList.add('twilight2');
+  mountain8.classList.add('twilight2');
+  mountain3.classList.add('twilight3');
+  mountain6.classList.add('twilight3');
+  mountain9.classList.add('twilight3');
+  clouds.style.color = "var(--linen)";
+}
+
+
 
 function checkTime() {
   sunsetArr = sunset.split(':');
@@ -180,6 +199,8 @@ function checkTime() {
 function calculateCountDownSunset () {
   let newDate = new Date();
   let calculateSunsetDate = newDate.setHours(parseInt(sunsetArr[0]), parseInt(sunsetArr[1]));
+  heading.innerText = "Time until sunset";
+  sunsetPrint.innerText = "Time of Sunset: " + sunset;
 
   let x = setInterval(function() {
     let today = new Date().getTime();
@@ -189,13 +210,13 @@ function calculateCountDownSunset () {
     let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    heading.innerText = "Time until sunset";
     counter.innerText = hours + "h " + minutes + "m " + seconds + "s ";
-    sunsetPrint.innerText = "Time of Sunset: " + sunset;
-    hideLoading.classList.add("hidden");
-    hideLoading.classList.add("hidden");
 
-    if (distance <= 0) {
+    if (minutes <= 30) {
+      activateTwilightMode();
+    }
+
+    else if (distance <= 0) {
       clearInterval(x);
       calculateCountDownSunriseBeforeMidnight();
     }
@@ -208,6 +229,10 @@ function calculateCountDownSunriseBeforeMidnight() {
   let calSunTomorrow = new Date(calculateSunriseDate);
       calSunTomorrow.setDate(calSunTomorrow.getDate() + 1);
 
+      activateNightMode();
+      heading.innerText = "Time until sunrise";
+      sunsetPrint.innerText ="Time of Sunrise: " + sunrise
+
   let y = setInterval(function() {
     let today = new Date().getTime();
     let distance = calSunTomorrow - today;
@@ -216,10 +241,7 @@ function calculateCountDownSunriseBeforeMidnight() {
     let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
   
-    activateNightMode();
     counter.innerText = hours + "h " + minutes + "m " + seconds + "s ";
-    heading.innerText = "Time until sunrise";
-    sunsetPrint.innerText ="Time of Sunrise: " + sunrise
 
     if (distance <= 0) {
       clearInterval(y);
@@ -232,6 +254,10 @@ function calculateCountDownSunriseAfterMidnight() {
   let newDate = new Date();
   let calculateSunriseDate = newDate.setHours(parseInt(sunriseArr[0]), parseInt(sunriseArr[1]));
 
+  activateNightMode();
+  heading.innerText = "Time until sunrise";
+  sunsetPrint.innerText ="Time of Sunrise: " + sunrise
+
   let y = setInterval(function() {
     let today = new Date().getTime();
     let distance = calculateSunriseDate - today;
@@ -240,10 +266,7 @@ function calculateCountDownSunriseAfterMidnight() {
     let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
     
-    activateNightMode();
-    heading.innerText = "Time until sunrise";
     counter.innerText = hours + "h " + minutes + "m " + seconds + "s ";
-    sunsetPrint.innerText ="Time of Sunrise: " + sunrise
 
     if (distance <= 0) {
       clearInterval(y);
