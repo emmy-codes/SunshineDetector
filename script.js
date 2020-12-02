@@ -19,12 +19,23 @@ const header = document.getElementById("header")
 const heading = document.getElementById("info");
 const counter = document.getElementById("countdown");
 const sun = document.getElementById("sun");
+const sunWarpper = document.getElementById("sun-wrapper");
 const centerText = document.getElementById("center-text");
 const sky = document.getElementsByClassName("sky");
 const twinkles = document.getElementsByClassName("stars");
 const hideLoading = document.querySelector(".loader");
 const sunsetTimer = document.querySelector("#time-sun");
 const clouds = document.getElementById("clouds");
+const mountain1 = document.querySelector("mountain1");
+const mountain2 = document.querySelector("mountain2");
+const mountain3 = document.querySelector("mountain3");
+const mountain4 = document.querySelector("mountain4");
+const mountain5 = document.querySelector("mountain5");
+const mountain6 = document.querySelector("mountain6");
+const mountain7 = document.querySelector("mountain7");
+const mountain8 = document.querySelector("mountain8");
+const mountain9 = document.querySelector("mountain9");
+const mountain10 = document.querySelector("mountain10");
 
 
 // API information
@@ -91,7 +102,7 @@ function getAPI (x, y) {
   
   const requestURL = url.concat("?key=",apiKey,"&lat=", lat, "&lng=", long)
         
-fetch(requestURL)
+  fetch(requestURL)
   .then(response => response.json())
   .then(data => {
     sunset = data.sunset;
@@ -103,6 +114,7 @@ fetch(requestURL)
     hideLoading.classList.add("hidden");
     sunsetTimer.classList.remove("hidden");
     clouds.classList.remove("hidden");
+
 
   })
   .catch(error => {
@@ -148,6 +160,28 @@ function activateNightMode() {
   clouds.style.display = "none";
 }
 
+// activateTwilightMode()
+
+function activateTwilightMode() {
+  centerText.style.marginTop = "25vh";
+  document.body.style.background = "#363638";
+  centerText.style.color = "var(--light-peach)";
+  header.style.color = "var(--light-peach)";
+  mountain1.classList.add('twilight1');
+  mountain4.classList.add('twilight1');
+  mountain7.classList.add('twilight1');
+  mountain10.classList.add('twilight1');
+  mountain2.classList.add('twilight2');
+  mountain5.classList.add('twilight2');
+  mountain8.classList.add('twilight2');
+  mountain3.classList.add('twilight3');
+  mountain6.classList.add('twilight3');
+  mountain9.classList.add('twilight3');
+  clouds.style.color = "var(--linen)";
+}
+
+
+
 function checkTime() {
   sunsetArr = sunset.split(':');
   sunriseArr = sunrise.split(':');
@@ -191,7 +225,11 @@ function calculateCountDownSunset () {
     heading.innerText = "Time until sunset";
     counter.innerText = hours + "h " + minutes + "m " + seconds + "s ";
 
-    if (distance <= 0) {
+    if (minutes <= 30) {
+      activateTwilightMode();
+    }
+
+    else if (distance <= 0) {
       clearInterval(x);
       calculateCountDownSunriseBeforeMidnight();
     }
@@ -252,50 +290,57 @@ function calculateCountDownSunriseAfterMidnight() {
 
 // Random advice EASTER EGG
 
-date.addEventListener("click", displayAdvice);
+sunWarpper.addEventListener("click", getAPIAdvice);
 
 function getAPIAdvice() {
-  const requestAdviceURL = "https://api.adviceslip.com/advice"
+  const requestAdviceURL = "https://api.adviceslip.com/advice";
 
   fetch(requestAdviceURL)
   .then(response => response.json())
   .then(data => {
-  randomAdvice = data.slip.advice;
-  console.log(randomAdvice);
-  displayAdvice();
+    randomAdvice = data.slip.advice;
+    displayAdvice();
+  })
+  .catch(error => {
+    displayAdviceError();
   });
-  // .catch(error => {
-  //   let errorText = document.getElementById("error")
-  //   errorElt.innerText = "No advice today :(";
-  // });
 };
 
 function displayAdvice(){
-  getAPIAdvice();
   let printRandomAdvice = document.getElementById("random-advice")
   let randomAdviceModal = document.getElementById("random-advice-modal");
-  let close = document.getElementsByClassName("close")[0];
-
-// Open the modal
-date.onclick = function() {
   randomAdviceModal.style.display = "block";
-  printRandomAdvice.innerText = randomAdvice;
-}
+  printRandomAdvice.innerHTML = randomAdvice;
 
-// close the modal
-close.onclick = function() {
+  let close = document.getElementsByClassName("close")[0];
+  close.onclick = function() {
   randomAdviceModal.style.display = "none";
-}
+  }
 
-// clicks outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == randomAdviceModal) {
-    randomAdviceModal.style.display = "none";
+  window.onclick = function(event) {
+    if (event.target == randomAdviceModal) {
+      randomAdviceModal.style.display = "none";
+    }
   }
 }
+
+function displayAdviceError(){
+  let printRandomAdvice = document.getElementById("random-advice")
+  let randomAdviceModal = document.getElementById("random-advice-modal");
+  randomAdviceModal.style.display = "block";
+  printRandomAdvice.innerText = "No news are good news.";
+
+  let close = document.getElementsByClassName("close")[0];
+  close.onclick = function() {
+    randomAdviceModal.style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    if (event.target == randomAdviceModal) {
+      randomAdviceModal.style.display = "none";
+    }
+  }
 }
-
-
 
 
 

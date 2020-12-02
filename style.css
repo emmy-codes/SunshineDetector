@@ -8,6 +8,9 @@
   --linen: #f3e9dd;
   --dark-peach: #f67e70;
   --light-peach: #f9b2aa;
+  --special-dark-peach: #ff7363;
+  --special-light-peach: #fa988c;
+  --special-middle-peach: #ff8e81;
   --dark-gray: #363638;
   --light-teal: #267b7e;
   --dark-teal: #1a535c;
@@ -43,12 +46,19 @@ main {
   justify-content: space-between;
 }
 
+#sun-wrapper {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  left: 15vw;
+  margin: 1rem;
+}
+
 #sun {
   display: block;
   content: "";
   position: absolute;
-  top: 0;
-  left: 15vw;
   z-index: -10;
 }
 
@@ -58,6 +68,7 @@ main {
   height: var(--sun-size);
   width: var(--sun-size);
   animation: pulse-red 5s infinite;
+  position: absolute;
   margin: 1rem;
 }
 
@@ -83,8 +94,6 @@ main {
   background: var(--linen);
   height: var(--sun-size);
   width: var(--sun-size);
-  top: 0;
-  left: 15vw;
   z-index: -10;
 }
 
@@ -284,42 +293,78 @@ main {
 }
 
 /*------------------- Random advice modals--------------------*/
-/* #random-advice {
-  margin: auto 0;
-  /* width: 30%; */
-/* text-align: center;
-  box-sizing: border-box;
-} */
 
 .random-advice-modal-class {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
+  display: none;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
   font-family: var(--font-text);
   color: var(--light-peach);
-  text-align: center;
-  border-radius: 20%;
+}
+
+.modal-cloud {
+  position: absolute;
+  top: 10vh;
+  right: 10%;
+  background-color: #fff;
+  width: 350px;
+  height: 120px;
+  margin: 10% auto;
+  border: none;
+  border-radius: 200px;
+  -moz-border-radius: 200px;
+  -webkit-border-radius: 200px;
+}
+
+.modal-cloud:before {
+  position: absolute;
+  top: -50px;
+  left: 40px;
+  background-color: #fff;
+  width: 140px;
+  height: 140px;
+  content: "";
+  border-radius: 100px;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  z-index: -2;
+}
+
+.modal-cloud:after {
+  position: absolute;
+  top: -90px;
+  left: auto;
+  right: 20px;
+  width: 180px;
+  height: 180px;
+  content: "";
+  background-color: #fff;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  z-index: -2;
 }
 
 .modal-content {
-  background-color: var(--dark-teal);
-  margin: 10% auto;
-  padding: 20px;
-  border: none;
-  border-radius: 5px;
-  width: 40%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  display: flex;
+  transform: translateX(-50%) translateY(-50%);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .close {
   color: var(--font-text);
-  float: right;
   font-size: 28px;
   font-weight: bold;
+  padding-left: 10px;
 }
 
 .close:hover,
@@ -327,6 +372,73 @@ main {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .modal-cloud {
+    position: absolute;
+    top: 10vh;
+    right: 10%;
+    background-color: #fff;
+    width: 220px;
+    height: 90px;
+    margin: 10% auto;
+    border: none;
+    border-radius: 200px;
+    -moz-border-radius: 200px;
+    -webkit-border-radius: 200px;
+  }
+
+  .modal-cloud:before {
+    position: absolute;
+    top: -30px;
+    left: 30px;
+    background-color: #fff;
+    width: 80px;
+    height: 80px;
+    content: "";
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    z-index: -2;
+  }
+
+  .modal-cloud:after {
+    position: absolute;
+    top: -50px;
+    left: auto;
+    right: 25px;
+    width: 100px;
+    height: 100px;
+    content: "";
+    background-color: #fff;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    z-index: -2;
+  }
+
+  .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    display: flex;
+    transform: translateX(-50%) translateY(-50%);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+  #random-advice {
+    font-size: 0.7rem;
+  }
+
+  .close {
+    color: var(--font-text);
+    font-size: 28px;
+    font-weight: bold;
+    padding-left: 10px;
+  }
 }
 
 /*------------------- Mountains --------------------*/
@@ -568,6 +680,29 @@ main {
   z-index: 7;
   transform-origin: top right;
   transform: skewX(20deg);
+}
+
+.twilight1 {
+  border-bottom: 420px solid var(--light-peach);
+}
+
+.twilight1::after {
+  border-bottom: 420px solid var(--dark-peach);
+}
+.twilight2 {
+  border-bottom: 470px solid var(--special-middle-peach);
+}
+
+.twilight2::after {
+  border-bottom: 470px solid var(--special-dark-peach);
+}
+
+.twilight3 {
+  border-bottom: 370px solid var(--special-light-peach);
+}
+
+.twilight3::after {
+  border-bottom: 370px solid var(--special-dark-peach);
 }
 
 @media only screen and (max-height: 670px) {
@@ -932,9 +1067,13 @@ main {
   }
 }
 
+
 /* OLD LOADING AND ANIMATION
 
 .loading_icon {
+
+.loading_1 {
+
   position: relative;
   width: 100%;
   height: 10px;
