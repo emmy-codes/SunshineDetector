@@ -149,6 +149,10 @@ header {
   z-index: 10;
 }
 
+.cloud-twilight, .cloud-twilight:after, .cloud-twilight:before {
+  background-color: var(--linen);
+}
+
 .cloudmargin {
   margin-top: 35px;
 }
