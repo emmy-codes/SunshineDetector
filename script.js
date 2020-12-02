@@ -227,7 +227,7 @@ function calculateCountDownSunset () {
     heading.innerText = "Time until sunset";
     counter.innerText = hours + "h " + minutes + "m " + seconds + "s ";
 
-    if (minutes <= 30) {
+    if (minutes <= 30 && hours === 0) {
       activateTwilightMode();
     }
 
