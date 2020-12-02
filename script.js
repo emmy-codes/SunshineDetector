@@ -19,6 +19,7 @@ const header = document.getElementById("header")
 const heading = document.getElementById("info");
 const counter = document.getElementById("countdown");
 const sun = document.getElementById("sun");
+const sunWarpper = document.getElementById("sun-wrapper");
 const centerText = document.getElementById("center-text");
 const sky = document.getElementsByClassName("sky");
 const twinkles = document.getElementsByClassName("stars");
@@ -73,7 +74,7 @@ const options = {
     timeout: 10000
 };
 
-const getLocation = navigator.geolocation.getCurrentPosition(success, error, options);
+// const getLocation = navigator.geolocation.getCurrentPosition(success, error, options);
 
 function success(position) {
   let latitude = position.coords.latitude;
@@ -112,7 +113,6 @@ function getAPI (x, y) {
     heading.classList.remove("hidden");
     hideLoading.classList.add("hidden");
     sunsetTimer.classList.remove("hidden");
-
   })
   .catch(error => {
     displayErrorPageStyles();
@@ -287,35 +287,51 @@ function calculateCountDownSunriseAfterMidnight() {
 
 // Random advice EASTER EGG
 
-date.addEventListener("click", getAPIAdvice);
+sunWarpper.addEventListener("click", getAPIAdvice);
 
 function getAPIAdvice() {
-  const requestAdviceURL = "https://api.adviceslip.com/advice"
+  const requestAdviceURL = "https://api.adviceslip.com/advice";
 
   fetch(requestAdviceURL)
   .then(response => response.json())
   .then(data => {
-  randomAdvice = data.slip.advice;
-  displayAdvice();
+    randomAdvice = data.slip.advice;
+    displayAdvice();
+  })
+  .catch(error => {
+    displayAdviceError();
   });
-  // .catch(error => {
-  //   printRandomAdvice.innerText = "No advice today :(";
-  // });
 };
 
 function displayAdvice(){
   let printRandomAdvice = document.getElementById("random-advice")
   let randomAdviceModal = document.getElementById("random-advice-modal");
   randomAdviceModal.style.display = "block";
-  printRandomAdvice.innerText = randomAdvice;
+  printRandomAdvice.innerHTML = randomAdvice;
 
-  // close the modal
   let close = document.getElementsByClassName("close")[0];
   close.onclick = function() {
   randomAdviceModal.style.display = "none";
   }
 
-  // clicks outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == randomAdviceModal) {
+      randomAdviceModal.style.display = "none";
+    }
+  }
+}
+
+function displayAdviceError(){
+  let printRandomAdvice = document.getElementById("random-advice")
+  let randomAdviceModal = document.getElementById("random-advice-modal");
+  randomAdviceModal.style.display = "block";
+  printRandomAdvice.innerText = "No news are good news.";
+
+  let close = document.getElementsByClassName("close")[0];
+  close.onclick = function() {
+    randomAdviceModal.style.display = "none";
+  }
+
   window.onclick = function(event) {
     if (event.target == randomAdviceModal) {
       randomAdviceModal.style.display = "none";
