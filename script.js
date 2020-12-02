@@ -74,7 +74,7 @@ const options = {
     timeout: 10000
 };
 
-// const getLocation = navigator.geolocation.getCurrentPosition(success, error, options);
+const getLocation = navigator.geolocation.getCurrentPosition(success, error, options);
 
 function success(position) {
   let latitude = position.coords.latitude;
