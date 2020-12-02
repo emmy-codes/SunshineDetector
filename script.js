@@ -73,7 +73,7 @@ const options = {
     timeout: 10000
 };
 
-const getLocation = navigator.geolocation.getCurrentPosition(success, error, options);
+// const getLocation = navigator.geolocation.getCurrentPosition(success, error, options);
 
 function success(position) {
   let latitude = position.coords.latitude;
@@ -287,7 +287,7 @@ function calculateCountDownSunriseAfterMidnight() {
 
 // Random advice EASTER EGG
 
-date.addEventListener("click", getAPIAdvice);
+date.addEventListener("click", displayAdvice);
 
 function getAPIAdvice() {
   const requestAdviceURL = "https://api.adviceslip.com/advice"
@@ -307,7 +307,8 @@ function displayAdvice(){
   let printRandomAdvice = document.getElementById("random-advice")
   let randomAdviceModal = document.getElementById("random-advice-modal");
   randomAdviceModal.style.display = "block";
-  printRandomAdvice.innerText = randomAdvice;
+  // printRandomAdvice.innerHTML = randomAdvice;
+  printRandomAdvice.innerHTML = "This is a long text just to make sure that the cross is aligned in the center of the div. I dont know how this is going to turn our, but lets hope for the best.";
 
   // close the modal
   let close = document.getElementsByClassName("close")[0];
