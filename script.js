@@ -277,7 +277,7 @@ function calculateCountDownSunriseAfterMidnight() {
 
 // Random advice EASTER EGG
 
-date.addEventListener("click", displayAdvice);
+date.addEventListener("click", getAPIAdvice);
 
 function getAPIAdvice() {
   const requestAdviceURL = "https://api.adviceslip.com/advice"
@@ -286,7 +286,6 @@ function getAPIAdvice() {
   .then(response => response.json())
   .then(data => {
   randomAdvice = data.slip.advice;
-  console.log(randomAdvice);
   displayAdvice();
   });
   // .catch(error => {
@@ -296,31 +295,24 @@ function getAPIAdvice() {
 };
 
 function displayAdvice(){
-  getAPIAdvice();
   let printRandomAdvice = document.getElementById("random-advice")
   let randomAdviceModal = document.getElementById("random-advice-modal");
-  let close = document.getElementsByClassName("close")[0];
-
-// Open the modal
-date.onclick = function() {
   randomAdviceModal.style.display = "block";
   printRandomAdvice.innerText = randomAdvice;
-}
 
-// close the modal
-close.onclick = function() {
+  // close the modal
+  let close = document.getElementsByClassName("close")[0];
+  close.onclick = function() {
   randomAdviceModal.style.display = "none";
-}
+  }
 
-// clicks outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == randomAdviceModal) {
-    randomAdviceModal.style.display = "none";
+  // clicks outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == randomAdviceModal) {
+      randomAdviceModal.style.display = "none";
+    }
   }
 }
-}
-
-
 
 
 
