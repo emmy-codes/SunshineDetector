@@ -14,7 +14,7 @@ const variations = {weekday : "long", month : "long", day : "numeric", year : "n
 const today = new Date();
 date.innerHTML = today.toLocaleDateString("en-US", variations);
 
-
+//Elemnts
 const header = document.getElementById("header")
 const heading = document.getElementById("info");
 const counter = document.getElementById("countdown");
@@ -27,6 +27,7 @@ const hideLoading = document.querySelector(".loader");
 const sunsetTimer = document.querySelector("#time-sun");
 const clouds = document.getElementById("clouds");
 const cloud = document.querySelectorAll(".cloud");
+
 const mountain1 = document.getElementsByClassName("mountain1");
 const mountain2 = document.getElementsByClassName("mountain2");
 const mountain3 = document.getElementsByClassName("mountain3");
@@ -99,7 +100,7 @@ function getAPI (x, y) {
   const lat = x
   const long = y
   const url = "https://cors-anywhere.herokuapp.com/https://api.geodatasource.com/city"
-  const apiKey = "JNHBEJJ3GUSDENNYOYFUIOOO7KM5PCZP"
+  const apiKey = "SYB4ORNCL6KQTWYWUEE83XDWPVXYQNSZ"
   
   const requestURL = url.concat("?key=",apiKey,"&lat=", lat, "&lng=", long)
         
@@ -161,10 +162,8 @@ function activateNightMode() {
   clouds.style.display = "none";
 }
 
-// activateTwilightMode()
 
 function activateTwilightMode() {
-  // centerText.style.marginTop = "25vh";
   document.body.style.background = "linear-gradient(var(--dark-gray), var(--linen))";
   sun.style.top = "25vh";
   centerText.style.color = "var(--light-peach)";
@@ -290,7 +289,6 @@ function calculateCountDownSunriseAfterMidnight() {
   }, 1000);
 }
 
-// Random advice EASTER EGG
 
 sunWarpper.addEventListener("click", getAPIAdvice);
 
