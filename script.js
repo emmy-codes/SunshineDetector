@@ -25,6 +25,16 @@ const twinkles = document.getElementsByClassName("stars");
 const hideLoading = document.querySelector(".loader");
 const sunsetTimer = document.querySelector("#time-sun");
 const clouds = document.getElementById("clouds");
+const mountain1 = document.querySelector("mountain1");
+const mountain2 = document.querySelector("mountain2");
+const mountain3 = document.querySelector("mountain3");
+const mountain4 = document.querySelector("mountain4");
+const mountain5 = document.querySelector("mountain5");
+const mountain6 = document.querySelector("mountain6");
+const mountain7 = document.querySelector("mountain7");
+const mountain8 = document.querySelector("mountain8");
+const mountain9 = document.querySelector("mountain9");
+const mountain10 = document.querySelector("mountain10");
 
 
 // API information
@@ -87,7 +97,7 @@ function getAPI (x, y) {
   const lat = x
   const long = y
   const url = "https://cors-anywhere.herokuapp.com/https://api.geodatasource.com/city"
-  const apiKey = "JNHBEJJ3GUSDENNYOYFUIOOO7KM5PCZP"
+  // const apiKey = "JNHBEJJ3GUSDENNYOYFUIOOO7KM5PCZP"
   
   const requestURL = url.concat("?key=",apiKey,"&lat=", lat, "&lng=", long)
         
@@ -289,8 +299,7 @@ function getAPIAdvice() {
   displayAdvice();
   });
   // .catch(error => {
-  //   let errorText = document.getElementById("error")
-  //   errorElt.innerText = "No advice today :(";
+  //   printRandomAdvice.innerText = "No advice today :(";
   // });
 };
 
