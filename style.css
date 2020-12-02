@@ -298,8 +298,6 @@ header {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
@@ -309,14 +307,54 @@ header {
   border-radius: 20%;
 }
 
-.modal-content {
-  background-color: var(--dark-teal);
-  margin: 10% auto;
-  padding: 20px;
+.modal-content:before {
+  content: "";
+  position: absolute;
+  background: #fff;
+  width: 12rem;
+  height: 12rem;
+  top: -5.5rem;
+  left: 4rem;
+  border-radius: 100px;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  z-index: -2;
+}
+
+.modal-content:after {
+  position: absolute;
+  content: "";
+  width: 15rem;
+  height: 15rem;
+  top: -8rem;
+  left: auto;
+  right: 2rem;
+  background-color: #fff;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  z-index: -2;
+}
+.modal-content{
+  background-color: white;
+  margin: 10% auto; 
+  padding: 1rem;
   border: none;
   border-radius: 5px;
-  width: 40%;
+  width: 32rem;
+  height: 7.5rem;
+  background: #fff;
+  border-radius: 200px;
+  -moz-border-radius: 200px;
+  -webkit-border-radius: 200px;
+  position: relative;
+  bottom: 3rem;
 }
+
+.random-advice {
+ z-index: 10;
+}
+
 
 .close {
   color: var(--font-text);
