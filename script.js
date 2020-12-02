@@ -97,11 +97,11 @@ function getAPI (x, y) {
   const lat = x
   const long = y
   const url = "https://cors-anywhere.herokuapp.com/https://api.geodatasource.com/city"
-  // const apiKey = "JNHBEJJ3GUSDENNYOYFUIOOO7KM5PCZP"
+  const apiKey = "JNHBEJJ3GUSDENNYOYFUIOOO7KM5PCZP"
   
   const requestURL = url.concat("?key=",apiKey,"&lat=", lat, "&lng=", long)
         
-fetch(requestURL)
+  fetch(requestURL)
   .then(response => response.json())
   .then(data => {
     sunset = data.sunset;
