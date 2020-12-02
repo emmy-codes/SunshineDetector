@@ -181,9 +181,7 @@ function activateTwilightMode() {
   mountain9[0].classList.add('twilight3');
   cloud[0].classList.add('cloud-twilight');
   cloud[1].classList.add('cloud-twilight');
-  
 }
-
 
 
 function checkTime() {
