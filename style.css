@@ -46,12 +46,19 @@ header {
   justify-content: space-between;
 }
 
+#sun-wrapper {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  left: 15vw;
+  margin: 1rem;
+}
+
 #sun {
   display: block;
   content: "";
   position: absolute;
-  top: 0;
-  left: 15vw;
   z-index: -10;
 }
 
@@ -61,6 +68,7 @@ header {
   height: var(--sun-size);
   width: var(--sun-size);
   animation: pulse-red 5s infinite;
+  position: absolute;
   margin: 1rem;
 }
 
@@ -86,8 +94,6 @@ header {
   background: var(--linen);
   height: var(--sun-size);
   width: var(--sun-size);
-  top: 0;
-  left: 15vw;
   z-index: -10;
 }
 
