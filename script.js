@@ -26,16 +26,17 @@ const twinkles = document.getElementsByClassName("stars");
 const hideLoading = document.querySelector(".loader");
 const sunsetTimer = document.querySelector("#time-sun");
 const clouds = document.getElementById("clouds");
-const mountain1 = document.querySelector("mountain1");
-const mountain2 = document.querySelector("mountain2");
-const mountain3 = document.querySelector("mountain3");
-const mountain4 = document.querySelector("mountain4");
-const mountain5 = document.querySelector("mountain5");
-const mountain6 = document.querySelector("mountain6");
-const mountain7 = document.querySelector("mountain7");
-const mountain8 = document.querySelector("mountain8");
-const mountain9 = document.querySelector("mountain9");
-const mountain10 = document.querySelector("mountain10");
+const cloud = document.querySelectorAll(".cloud");
+const mountain1 = document.getElementsByClassName("mountain1");
+const mountain2 = document.getElementsByClassName("mountain2");
+const mountain3 = document.getElementsByClassName("mountain3");
+const mountain4 = document.getElementsByClassName("mountain4");
+const mountain5 = document.getElementsByClassName("mountain5");
+const mountain6 = document.getElementsByClassName("mountain6");
+const mountain7 = document.getElementsByClassName("mountain7");
+const mountain8 = document.getElementsByClassName("mountain8");
+const mountain9 = document.getElementsByClassName("mountain9");
+const mountain10 = document.getElementsByClassName("mountain10");
 
 
 // API information
@@ -163,21 +164,24 @@ function activateNightMode() {
 // activateTwilightMode()
 
 function activateTwilightMode() {
-  centerText.style.marginTop = "25vh";
-  document.body.style.background = "#363638";
+  // centerText.style.marginTop = "25vh";
+  document.body.style.background = "linear-gradient(var(--dark-gray), var(--linen))";
+  sun.style.top = "25vh";
   centerText.style.color = "var(--light-peach)";
   header.style.color = "var(--light-peach)";
-  mountain1.classList.add('twilight1');
-  mountain4.classList.add('twilight1');
-  mountain7.classList.add('twilight1');
-  mountain10.classList.add('twilight1');
-  mountain2.classList.add('twilight2');
-  mountain5.classList.add('twilight2');
-  mountain8.classList.add('twilight2');
-  mountain3.classList.add('twilight3');
-  mountain6.classList.add('twilight3');
-  mountain9.classList.add('twilight3');
-  clouds.style.color = "var(--linen)";
+  mountain1[0].classList.add('twilight1');
+  mountain4[0].classList.add('twilight1');
+  mountain7[0].classList.add('twilight1');
+  mountain10[0].classList.add('twilight1');
+  mountain2[0].classList.add('twilight2');
+  mountain5[0].classList.add('twilight2');
+  mountain8[0].classList.add('twilight2');
+  mountain3[0].classList.add('twilight3');
+  mountain6[0].classList.add('twilight3');
+  mountain9[0].classList.add('twilight3');
+  cloud[0].classList.add('cloud-twilight');
+  cloud[1].classList.add('cloud-twilight');
+  
 }
 
 
