@@ -181,7 +181,6 @@ function activateTwilightMode() {
 }
 
 
-
 function checkTime() {
   sunsetArr = sunset.split(':');
   sunriseArr = sunrise.split(':');
