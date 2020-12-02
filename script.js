@@ -287,7 +287,7 @@ function calculateCountDownSunriseAfterMidnight() {
 
 // Random advice EASTER EGG
 
-date.addEventListener("click", displayAdvice);
+date.addEventListener("click", getAPIAdvice);
 
 function getAPIAdvice() {
   const requestAdviceURL = "https://api.adviceslip.com/advice"
@@ -307,9 +307,8 @@ function displayAdvice(){
   let printRandomAdvice = document.getElementById("random-advice")
   let randomAdviceModal = document.getElementById("random-advice-modal");
   randomAdviceModal.style.display = "block";
-  // printRandomAdvice.innerHTML = randomAdvice;
-  printRandomAdvice.innerHTML = "This is a long text just to make sure that the cross is aligned in the center of the div. I dont know how this is going to turn our, but lets hope for the best.";
-
+  printRandomAdvice.innerHTML = randomAdvice;
+  
   // close the modal
   let close = document.getElementsByClassName("close")[0];
   close.onclick = function() {

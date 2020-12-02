@@ -368,14 +368,14 @@ header {
   cursor: pointer;
 }
 
-/* @media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
   .modal-cloud {
     position: absolute;
     top: 10vh;
     right: 10%;
     background-color: #fff;
-    width: 350px;
-    height: 120px;
+    width: 220px;
+    height: 90px;
     margin: 10% auto;
     border: none;
     border-radius: 200px;
@@ -383,34 +383,34 @@ header {
     -webkit-border-radius: 200px;
   }
 
-  /* .modal-cloud:before {
+  .modal-cloud:before {
     position: absolute;
-    top: -50px;
-    left: 40px;
+    top: -30px;
+    left: 30px;
     background-color: #fff;
-    width: 140px;
-    height: 140px;
+    width: 80px;
+    height: 80px;
     content: "";
     border-radius: 100px;
     -moz-border-radius: 100px;
     -webkit-border-radius: 100px;
     z-index: -2;
   }
-  
+
   .modal-cloud:after {
     position: absolute;
-    top: -90px;
+    top: -50px;
     left: auto;
-    right: 20px;
-    width: 180px;
-    height: 180px;
+    right: 25px;
+    width: 100px;
+    height: 100px;
     content: "";
     background-color: #fff;
     border-radius: 50%;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     z-index: -2;
-  } */
+  }
 
   .modal-content {
     position: absolute;
@@ -423,6 +423,9 @@ header {
     justify-content: center;
     align-items: center;
   }
+  #random-advice {
+    font-size: 0.7rem;
+  }
 
   .close {
     color: var(--font-text);
@@ -430,7 +433,7 @@ header {
     font-weight: bold;
     padding-left: 10px;
   }
-} */
+}
 
 /*------------------- Mountains --------------------*/
 .mountain1 {
