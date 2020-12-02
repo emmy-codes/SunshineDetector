@@ -31,7 +31,7 @@ main {
   overflow: hidden;
 }
 
-header {
+#header {
   font-family: var(--font-text);
   font-weight: 700;
   margin: 1rem;
@@ -818,17 +818,19 @@ header {
 
 .loader {
   width: 150px;
-  margin: 25vh auto;
-  position: relative;
+  /* margin: 25vh auto; */
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 
 .loading_icon {
   position: absolute;
   width: 100px;
   height: 30px;
-
   left: 25px;
-  /* top: 40px; */
+  z-index: 5;
 
   background: #fff;
   border-radius: 100px;
