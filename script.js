@@ -152,6 +152,7 @@ function displayErrorPageStyles() {
 }
 
 function activateNightMode() {
+  sun.style.top = "0";
   centerText.style.marginTop = "25vh";
   document.body.style.background = "black";
   centerText.style.color = "var(--light-peach)";
