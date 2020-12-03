@@ -156,7 +156,7 @@ main {
 }
 
 .cloud-twilight, .cloud-twilight:after, .cloud-twilight:before {
-  background-color: var(--linen);
+  background-color: var(--dark-gray);
 }
 
 .cloudmargin {
