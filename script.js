@@ -160,6 +160,16 @@ function activateNightMode() {
   sky[0].classList.add('nightsky');
   twinkles[0].classList.add('twinkles');
   clouds.style.display = "none";
+  mountain1[0].classList.remove('twilight1');
+  mountain4[0].classList.remove('twilight1');
+  mountain7[0].classList.remove('twilight1');
+  mountain10[0].classList.remove('twilight1');
+  mountain2[0].classList.remove('twilight2');
+  mountain5[0].classList.remove('twilight2');
+  mountain8[0].classList.remove('twilight2');
+  mountain3[0].classList.remove('twilight3');
+  mountain6[0].classList.remove('twilight3');
+  mountain9[0].classList.remove('twilight3');
 }
 
 
