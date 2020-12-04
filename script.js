@@ -205,19 +205,16 @@ function checkTime() {
     parseInt(minutes) > parseInt(sunriseArr[1]) || 
     parseInt(hours) === parseInt(sunsetArr[0]) && 
     parseInt(minutes) < parseInt(sunsetArr[1])) {
-      console.log("Middle of the day")
       calculateCountDownSunset();
 
   } else if (parseInt(hours) > parseInt(sunsetArr[0]) || 
     parseInt(hours) === parseInt(sunsetArr[0]) && 
     parseInt(minutes) > parseInt(sunsetArr[1])) {
-      console.log("After sunset, before midnight")
       calculateCountDownSunriseBeforeMidnight()
 
   } else if (parseInt(hours) < parseInt(sunriseArr[0]) || 
     parseInt(hours) === parseInt(sunriseArr[0]) && 
     parseInt(minutes) < parseInt(sunsetArr[1])) { 
-      console.log("After midnight, before sunrise");
       calculateCountDownSunriseAfterMidnight()
     };
 };
