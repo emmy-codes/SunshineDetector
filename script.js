@@ -150,7 +150,7 @@ function displayErrorPageStyles() {
 function activateNightMode() {
   document.body.style.background = "black";
   header.style.color = "var(--light-peach)";
-  sun.style.top = "0vh";
+  sunWarpper.style.top = "0vh";
   sun.classList.add('moon');
   clouds.style.display = "none";
 
@@ -175,7 +175,7 @@ function activateNightMode() {
 
 function activateTwilightMode() {
   document.body.style.background = "linear-gradient(var(--dark-gray), var(--linen))";
-  sun.style.top = "25vh";
+  sunWarpper.style.top = "35vh";
   centerText.style.color = "var(--light-peach)";
   header.style.color = "var(--light-peach)";
 
