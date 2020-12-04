@@ -32,13 +32,15 @@ const mountain9 = document.getElementsByClassName("mountain9");
 const mountain10 = document.getElementsByClassName("mountain10");
 
 // Get API information stored in global scope
-let randomAdvice;
 let sunset;
 let sunrise;
 let sunsetArr;
 let sunriseArr;
 let hours;
 let minutes;
+let randomAdvice;
+let longitude
+let latitude
 
 function dateToday() {
   const today = new Date();
@@ -74,8 +76,8 @@ const options = {
 const getLocation = navigator.geolocation.getCurrentPosition(success, error, options);
 
 function success(position) {
-  let latitude = position.coords.latitude;
-  let longitude = position.coords.longitude;
+  latitude = position.coords.latitude;
+  longitude = position.coords.longitude;
   getAPI(latitude, longitude);
 };
 
