@@ -112,8 +112,6 @@ function getAPIGeoDataSource (x, y) {
     hideLoading.classList.add("hidden");
     sunsetTimer.classList.remove("hidden");
     clouds.classList.remove("hidden");
-
-
   })
   .catch(error => {
     displayErrorPageStyles();
@@ -123,8 +121,8 @@ function getAPIGeoDataSource (x, y) {
     const refreshButton = document.getElementById("refresh-icon");
       refreshButton.addEventListener("click", () => {
       window.location.reload();
-      });
-   });
+    });
+  });
 }; 
 
 function displayErrorPageStyles() {
