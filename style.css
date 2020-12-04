@@ -299,7 +299,7 @@ main {
 
 .close {
   color: var(--font-text);
-  font-size: 28px;
+  font-size: 18px;
   font-weight: bold;
   padding-left: 10px;
 }
