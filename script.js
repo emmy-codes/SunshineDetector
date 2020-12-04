@@ -1,21 +1,12 @@
- //time-current
- const time = document.getElementById("time");
-
-//show sunset time
-const sunsetPrint = document.getElementById("time-sun");
-
-//show city
-let city = "";
-const cityPrint = document.getElementById("city");
-
-//date
-const date = document.getElementById("date");
-const variations = {weekday : "long", month : "long", day : "numeric", year : "numeric"}
-const today = new Date();
-date.innerHTML = today.toLocaleDateString("en-US", variations);
-
-//Elemnts
+//Variables for the header
 const header = document.getElementById("header")
+const date = document.getElementById("date");
+const time = document.getElementById("time");
+const sunsetPrint = document.getElementById("time-sun");
+const cityPrint = document.getElementById("city");
+let city = "";
+
+//Variables the main page
 const heading = document.getElementById("info");
 const counter = document.getElementById("countdown");
 const sun = document.getElementById("sun");
@@ -28,6 +19,7 @@ const sunsetTimer = document.querySelector("#time-sun");
 const clouds = document.getElementById("clouds");
 const cloud = document.querySelectorAll(".cloud");
 
+//Variables for the footer
 const mountain1 = document.getElementsByClassName("mountain1");
 const mountain2 = document.getElementsByClassName("mountain2");
 const mountain3 = document.getElementsByClassName("mountain3");
@@ -39,18 +31,18 @@ const mountain8 = document.getElementsByClassName("mountain8");
 const mountain9 = document.getElementsByClassName("mountain9");
 const mountain10 = document.getElementsByClassName("mountain10");
 
-
-// API information
+// Get API information stored in global scope
 let randomAdvice;
 let sunset;
 let sunrise;
 let sunsetArr;
 let sunriseArr;
+let hours;
+let minutes;
 
-//Store time of Right now
-let hours
-let minutes
-
+const today = new Date();
+const variations = {weekday : "long", month : "long", day : "numeric", year : "numeric"}
+date.innerHTML = today.toLocaleDateString("en-US", variations);
 
 function timeRightNow() {
   setInterval(function() {
@@ -81,7 +73,6 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
 function success(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
-  console.log(latitude, longitude);
   getAPI(latitude, longitude);
 };
 
