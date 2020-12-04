@@ -40,9 +40,12 @@ let sunriseArr;
 let hours;
 let minutes;
 
-const today = new Date();
-const variations = {weekday : "long", month : "long", day : "numeric", year : "numeric"}
-date.innerHTML = today.toLocaleDateString("en-US", variations);
+function dateToday() {
+  const today = new Date();
+  const variations = {weekday : "long", month : "long", day : "numeric", year : "numeric"}
+  date.innerHTML = today.toLocaleDateString("en-US", variations);
+}
+dateToday();
 
 function timeRightNow() {
   setInterval(function() {
