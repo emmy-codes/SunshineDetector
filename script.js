@@ -1,21 +1,12 @@
- //time-current
- const time = document.getElementById("time");
-
-//show sunset time
-const sunsetPrint = document.getElementById("time-sun");
-
-//show city
-let city = "";
-const cityPrint = document.getElementById("city");
-
-//date
-const date = document.getElementById("date");
-const variations = {weekday : "long", month : "long", day : "numeric", year : "numeric"}
-const today = new Date();
-date.innerHTML = today.toLocaleDateString("en-US", variations);
-
-//Elemnts
+//Variables for the header
 const header = document.getElementById("header")
+const date = document.getElementById("date");
+const time = document.getElementById("time");
+const sunsetPrint = document.getElementById("time-sun");
+const cityPrint = document.getElementById("city");
+let city = "";
+
+//Variables the main page
 const heading = document.getElementById("info");
 const counter = document.getElementById("countdown");
 const sun = document.getElementById("sun");
@@ -28,6 +19,7 @@ const sunsetTimer = document.querySelector("#time-sun");
 const clouds = document.getElementById("clouds");
 const cloud = document.querySelectorAll(".cloud");
 
+//Variables for the footer
 const mountain1 = document.getElementsByClassName("mountain1");
 const mountain2 = document.getElementsByClassName("mountain2");
 const mountain3 = document.getElementsByClassName("mountain3");
@@ -39,18 +31,23 @@ const mountain8 = document.getElementsByClassName("mountain8");
 const mountain9 = document.getElementsByClassName("mountain9");
 const mountain10 = document.getElementsByClassName("mountain10");
 
-
-// API information
-let randomAdvice;
+// Variables for storing API information in global scope
 let sunset;
 let sunrise;
 let sunsetArr;
 let sunriseArr;
+let hours;
+let minutes;
+let randomAdvice;
+let longitude;
+let latitude;
 
-//Store time of Right now
-let hours
-let minutes
-
+function dateToday() {
+  const today = new Date();
+  const variations = {weekday : "long", month : "long", day : "numeric", year : "numeric"}
+  date.innerHTML = today.toLocaleDateString("en-US", variations);
+};
+dateToday();
 
 function timeRightNow() {
   setInterval(function() {
@@ -66,7 +63,7 @@ function timeRightNow() {
       }
       time.innerHTML = hours + ":" + minutes;
     }, 1000);
-}
+};
 timeRightNow();
 
 
@@ -79,30 +76,30 @@ const options = {
 const getLocation = navigator.geolocation.getCurrentPosition(success, error, options);
 
 function success(position) {
-  let latitude = position.coords.latitude;
-  let longitude = position.coords.longitude;
-  console.log(latitude, longitude);
-  getAPI(latitude, longitude);
+  latitude = position.coords.latitude;
+  longitude = position.coords.longitude;
+  getAPIGeoDataSource(latitude, longitude);
 };
 
-function error () {
+function error() {
   displayErrorPageStyles();
   heading.innerText = "Tripped when looking for sunshine :(";
   counter.innerHTML = "We could not find your location! Please refresh the page and allow us to see your location." + 
   "<br/>" + "<div id=\"refresh-icon\"><i class=\"fas fa-redo\"></i></div>";
+
   const refreshButton = document.getElementById("refresh-icon");
   refreshButton.addEventListener("click", () => {
-  window.location.reload();
+    window.location.reload();
   });
 };
 
-function getAPI (x, y) {
-  const lat = x
-  const long = y
-  const url = "https://cors-anywhere.herokuapp.com/https://api.geodatasource.com/city"
-  const apiKey = "SYB4ORNCL6KQTWYWUEE83XDWPVXYQNSZ"
+function getAPIGeoDataSource(x, y) {
+  const lat = x;
+  const long = y;
+  const url = "https://cors-anywhere.herokuapp.com/https://api.geodatasource.com/city";
+  const apiKey = "SYB4ORNCL6KQTWYWUEE83XDWPVXYQNSZ";
   
-  const requestURL = url.concat("?key=",apiKey,"&lat=", lat, "&lng=", long)
+  const requestURL = url.concat("?key=",apiKey,"&lat=", lat, "&lng=", long);
         
   fetch(requestURL)
   .then(response => response.json())
@@ -116,19 +113,18 @@ function getAPI (x, y) {
     hideLoading.classList.add("hidden");
     sunsetTimer.classList.remove("hidden");
     clouds.classList.remove("hidden");
-
-
   })
   .catch(error => {
     displayErrorPageStyles();
     heading.innerText = "Tripped when looking for sunshine :(";
     counter.innerHTML = "Something went wrong when getting information regarding the sunset or sunrise. Please refresh the page so we can try get it for you again!" + 
     "<br/>" + "<div id=\"refresh-icon\"><i class=\"fas fa-redo\"></i></div>";
+
     const refreshButton = document.getElementById("refresh-icon");
-      refreshButton.addEventListener("click", () => {
+    refreshButton.addEventListener("click", () => {
       window.location.reload();
-      });
-   });
+    });
+  });
 }; 
 
 function displayErrorPageStyles() {
@@ -149,18 +145,21 @@ function displayErrorPageStyles() {
  heading.classList.remove("hidden");
  hideLoading.classList.add("hidden");
  sunsetTimer.classList.remove("hidden");
-}
+};
 
 function activateNightMode() {
-  sun.style.top = "0";
-  centerText.style.marginTop = "25vh";
   document.body.style.background = "black";
-  centerText.style.color = "var(--light-peach)";
   header.style.color = "var(--light-peach)";
+  sun.style.top = "0vh";
   sun.classList.add('moon');
+  clouds.style.display = "none";
+
+  centerText.style.marginTop = "25vh";
+  centerText.style.color = "var(--light-peach)";
+  
   sky[0].classList.add('nightsky');
   twinkles[0].classList.add('twinkles');
-  clouds.style.display = "none";
+  
   mountain1[0].classList.remove('twilight1');
   mountain4[0].classList.remove('twilight1');
   mountain7[0].classList.remove('twilight1');
@@ -171,7 +170,7 @@ function activateNightMode() {
   mountain3[0].classList.remove('twilight3');
   mountain6[0].classList.remove('twilight3');
   mountain9[0].classList.remove('twilight3');
-}
+};
 
 
 function activateTwilightMode() {
@@ -179,6 +178,10 @@ function activateTwilightMode() {
   sun.style.top = "25vh";
   centerText.style.color = "var(--light-peach)";
   header.style.color = "var(--light-peach)";
+
+  cloud[0].classList.add('cloud-twilight');
+  cloud[1].classList.add('cloud-twilight');
+
   mountain1[0].classList.add('twilight1');
   mountain4[0].classList.add('twilight1');
   mountain7[0].classList.add('twilight1');
@@ -189,9 +192,7 @@ function activateTwilightMode() {
   mountain3[0].classList.add('twilight3');
   mountain6[0].classList.add('twilight3');
   mountain9[0].classList.add('twilight3');
-  cloud[0].classList.add('cloud-twilight');
-  cloud[1].classList.add('cloud-twilight');
-}
+};
 
 
 function checkTime() {
@@ -204,19 +205,16 @@ function checkTime() {
     parseInt(minutes) > parseInt(sunriseArr[1]) || 
     parseInt(hours) === parseInt(sunsetArr[0]) && 
     parseInt(minutes) < parseInt(sunsetArr[1])) {
-      console.log("Middle of the day")
       calculateCountDownSunset();
 
   } else if (parseInt(hours) > parseInt(sunsetArr[0]) || 
     parseInt(hours) === parseInt(sunsetArr[0]) && 
     parseInt(minutes) > parseInt(sunsetArr[1])) {
-      console.log("After sunset, before midnight")
       calculateCountDownSunriseBeforeMidnight()
 
   } else if (parseInt(hours) < parseInt(sunriseArr[0]) || 
     parseInt(hours) === parseInt(sunriseArr[0]) && 
     parseInt(minutes) < parseInt(sunsetArr[1])) { 
-      console.log("After midnight, before sunrise");
       calculateCountDownSunriseAfterMidnight()
     };
 };
@@ -239,23 +237,21 @@ function calculateCountDownSunset () {
 
     if (minutes <= 30 && hours === 0) {
       activateTwilightMode();
-    }
-
-    else if (distance <= 0) {
+    } else if (distance <= 0) {
       clearInterval(x);
       calculateCountDownSunriseBeforeMidnight();
-    }
+    };
   }, 1000);
-}     
+};
 
 function calculateCountDownSunriseBeforeMidnight() {
   let newDate = new Date();
   let calculateSunriseDate = newDate.setHours(parseInt(sunriseArr[0]), parseInt(sunriseArr[1]));
   let calSunTomorrow = new Date(calculateSunriseDate);
-      calSunTomorrow.setDate(calSunTomorrow.getDate() + 1);
+  calSunTomorrow.setDate(calSunTomorrow.getDate() + 1);
 
-      activateNightMode();
-      sunsetPrint.innerText ="Time of Sunrise: " + sunrise
+  activateNightMode();
+  sunsetPrint.innerText ="Time of Sunrise: " + sunrise
 
   let y = setInterval(function() {
     let today = new Date().getTime();
@@ -271,9 +267,9 @@ function calculateCountDownSunriseBeforeMidnight() {
     if (distance <= 0) {
       clearInterval(y);
       calculateCountDownSunriseAfterMidnight()
-    }
+    };
   }, 1000);
-}
+};
 
 function calculateCountDownSunriseAfterMidnight() {
   let newDate = new Date();
@@ -296,9 +292,9 @@ function calculateCountDownSunriseAfterMidnight() {
     if (distance <= 0) {
       clearInterval(y);
       window.location.reload();
-    }
+    };
   }, 1000);
-}
+};
 
 
 sunWarpper.addEventListener("click", getAPIAdvice);
@@ -317,25 +313,26 @@ function getAPIAdvice() {
   });
 };
 
-function displayAdvice(){
+function displayAdvice() {
   let printRandomAdvice = document.getElementById("random-advice")
   let randomAdviceModal = document.getElementById("random-advice-modal");
   randomAdviceModal.style.display = "block";
   printRandomAdvice.innerHTML = randomAdvice;
 
   let close = document.getElementsByClassName("close")[0];
+
   close.onclick = function() {
-  randomAdviceModal.style.display = "none";
-  }
+    randomAdviceModal.style.display = "none";
+  };
 
   window.onclick = function(event) {
     if (event.target == randomAdviceModal) {
       randomAdviceModal.style.display = "none";
-    }
-  }
-}
+    };
+  };
+};
 
-function displayAdviceError(){
+function displayAdviceError() {
   let printRandomAdvice = document.getElementById("random-advice")
   let randomAdviceModal = document.getElementById("random-advice-modal");
   randomAdviceModal.style.display = "block";
@@ -344,14 +341,14 @@ function displayAdviceError(){
   let close = document.getElementsByClassName("close")[0];
   close.onclick = function() {
     randomAdviceModal.style.display = "none";
-  }
+  };
 
   window.onclick = function(event) {
     if (event.target == randomAdviceModal) {
       randomAdviceModal.style.display = "none";
-    }
-  }
-}
+    };
+  };
+};
 
 
 
