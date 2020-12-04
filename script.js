@@ -78,7 +78,7 @@ const getLocation = navigator.geolocation.getCurrentPosition(success, error, opt
 function success(position) {
   latitude = position.coords.latitude;
   longitude = position.coords.longitude;
-  getAPI(latitude, longitude);
+  getAPIGeoDataSource(latitude, longitude);
 };
 
 function error () {
@@ -92,7 +92,7 @@ function error () {
   });
 };
 
-function getAPI (x, y) {
+function getAPIGeoDataSource (x, y) {
   const lat = x
   const long = y
   const url = "https://cors-anywhere.herokuapp.com/https://api.geodatasource.com/city"
