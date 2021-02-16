@@ -96,7 +96,7 @@ function error() {
 function getAPIGeoDataSource(x, y) {
   const lat = x;
   const long = y;
-  const url = "https://cors-anywhere.herokuapp.com/https://api.geodatasource.com/city";
+  const url = "https://api.geodatasource.com/city";
   const apiKey = "SYB4ORNCL6KQTWYWUEE83XDWPVXYQNSZ";
   
   const requestURL = url.concat("?key=",apiKey,"&lat=", lat, "&lng=", long);
@@ -199,15 +199,7 @@ function checkTime() {
   sunsetArr = sunset.split(':');
   sunriseArr = sunrise.split(':');
 
-  if (parseInt(hours) > parseInt(sunriseArr[0]) && 
-    parseInt(hours) < parseInt(sunsetArr[0]) || 
-    parseInt(hours) === parseInt(sunriseArr[0]) && 
-    parseInt(minutes) > parseInt(sunriseArr[1]) || 
-    parseInt(hours) === parseInt(sunsetArr[0]) && 
-    parseInt(minutes) < parseInt(sunsetArr[1])) {
-      calculateCountDownSunset();
-
-  } else if (parseInt(hours) > parseInt(sunsetArr[0]) || 
+   if (parseInt(hours) > parseInt(sunsetArr[0]) || 
     parseInt(hours) === parseInt(sunsetArr[0]) && 
     parseInt(minutes) > parseInt(sunsetArr[1])) {
       calculateCountDownSunriseBeforeMidnight()
@@ -216,7 +208,10 @@ function checkTime() {
     parseInt(hours) === parseInt(sunriseArr[0]) && 
     parseInt(minutes) < parseInt(sunsetArr[1])) { 
       calculateCountDownSunriseAfterMidnight()
-    };
+
+  } else {
+      calculateCountDownSunset();
+  };
 };
 
 function calculateCountDownSunset () {
