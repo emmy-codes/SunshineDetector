@@ -1,4 +1,4 @@
-# SunshineDetector
+# SunshineDetector (Group project)
 
 
 URL
@@ -13,7 +13,10 @@ Once it was displaying our sunrise/sunset time and your location, we needed a co
 
 ((Below are very short summaries on a project we worked on 10months ago, and isn't fully representitive of everyone's work))
 
-I worked on creating a loading screen using a skeleton UI which would be shown until the user had allowed location sharing and the API had loaded.
 Cecilia, researched on using media queries to enable better responsiveness with our CSS mountainrange, as well as adding a colour change when sunset had been reached.
 Aleksandra introduced us to CSS variables which turned out to be very useful! She also worked on creating a visual effect around the sun
 When we were close to completion, Sofia created a second API with quotes/jokes that were hidding in the clouds for you to click on.
+
+# Personal implementation
+
+I myself worked on creating a loading screen using a skeleton UI which would account for the time of the API request. I coded in the visuals in CSS, with basic DOM manipulation on promise resolution (once the API had loaded). I also added variants for the loader for sunset and sunrise in HTML and CSS. I implemented basic location fetching by utilising the geolocation API and forwarded the coordinates to the REST API to fetch the sunrise/sunset data.
